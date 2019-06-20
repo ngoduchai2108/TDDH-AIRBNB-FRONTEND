@@ -46,6 +46,6 @@ export class LoginComponent implements OnInit {
       }, error => {
         this.isLogInFailed = true;
       });
-    }
+    } else {this.isLogInFailed = true; }
   }
 }
