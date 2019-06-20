@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLogInFailed = false;
   roles: string[] = [];
-  formValid = false;
 
   constructor(
     private authService: AuthService,
@@ -34,7 +33,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this.formValid = false;
       const {value} = this.loginForm;
       // @ts-ignore
       this.authService.attempAuth(value).subscribe(next => {
