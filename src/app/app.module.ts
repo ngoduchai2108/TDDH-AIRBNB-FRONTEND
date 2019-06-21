@@ -11,6 +11,7 @@ import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
 import {UserComponent} from './user/user.component';
 import {AdminComponent} from './admin/admin.component';
+import { HouseManagementComponent } from './user/house-management/house-management.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {AdminComponent} from './admin/admin.component';
     HomeComponent,
     UserComponent,
     AdminComponent,
+    HouseManagementComponent,
   ],
   imports: [
     HttpClientModule,
