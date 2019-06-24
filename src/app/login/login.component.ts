@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
         this.tokenStorageService.saveAuthor(next.authorities);
         this.isLoggedIn = true;
         this.roles = this.tokenStorageService.getAuthor();
+        window.location.reload();
         this.router.navigate(['/home']);
       }, error => {
         this.isLogInFailed = true;
