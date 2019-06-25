@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class CategorieshouseService {
-  private readonly API_CATE_URL = '';
+  private readonly API_CATE_URL = 'http://localhost:8080/api/auth/categories';
 
   constructor(private http: HttpClient) {
   }
@@ -18,11 +18,15 @@ export class CategorieshouseService {
   }
 
   remove(id: number): Observable<any> {
-    // @ts-ignore
-    return this.http.delete<number>(this.API_CATE_URL, id);
+    return this.http.delete<number>(this.API_CATE_URL + '/' + id + '/delete');
   }
 
   update(categoriesHouse: CategoriesHouse): Observable<CategoriesHouse> {
-    return this.http.put<CategoriesHouse>(this.API_CATE_URL, categoriesHouse);
+    return this.http.put<CategoriesHouse>(this.API_CATE_URL + '/' + categoriesHouse.id, categoriesHouse);
   }
+
+  create(categoriesHouse: CategoriesHouse): Observable<CategoriesHouse> {
+    return this.http.post<CategoriesHouse>(this.API_CATE_URL, categoriesHouse);
+  }
+
 }
