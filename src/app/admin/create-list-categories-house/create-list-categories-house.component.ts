@@ -18,6 +18,7 @@ export class CreateListCategoriesHouseComponent implements OnInit {
   category5: CategoriesHouse = {id: 5, name: 'Biet Thu 4*'};
   categorieslist: CategoriesHouse[] = [this.category1, this.category2, this.category3, this.category4, this.category5];
   indexofEdit = -1;
+  message: string;
 
   constructor(private categoriesService: CategorieshouseService,
               private fb: FormBuilder) {
@@ -38,7 +39,10 @@ export class CreateListCategoriesHouseComponent implements OnInit {
   onDelete(categoriesHouse: CategoriesHouse) {
     const r = confirm('Are u sure delete this categoryHouse?');
     if (r) {
-      this.categoriesService.remove(categoriesHouse.id).subscribe(next => this.indexofEdit = -1, err => alert(err));
+      this.categoriesService.remove(categoriesHouse.id).subscribe(next => {
+        this.indexofEdit = -1;
+        this.message = 'Deleted';
+      }, err => alert(err));
     }
   }
 
@@ -47,7 +51,25 @@ export class CreateListCategoriesHouseComponent implements OnInit {
     this.categoriesEditForm.patchValue(category);
   }
 
-  onEditCategory() {
+  onEditCategory(category: CategoriesHouse) {
+    if (this.categoriesEditForm.valid) {
+      const {value} = this.categoriesEditForm;
+      this.categoriesService.update(value).subscribe(next => {
+        console.log('ok');
+        this.message = 'Edited';
+      }, err => console.log(err));
+    } else {
+      this.message = 'Edit Form invalid';
+    }
+  }
 
+  onCreate() {
+    if (this.createCategoriesForm.valid) {
+      const {value} = this.createCategoriesForm;
+      this.categoriesService.update(value).subscribe(next => {
+        console.log('ok');
+        this.message = 'Created';
+      }, err => console.log(err));
+    }
   }
 }
