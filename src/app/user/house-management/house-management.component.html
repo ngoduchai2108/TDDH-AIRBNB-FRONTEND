@@ -1,3 +1,207 @@
-<p>
-  house-management works!
-</p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>eCommerce Product Detail</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
+</head>
+<form [formGroup]="formData" (ngSubmit)="onClickSubmit(formData.value)">
+  <div class="bodyHome">
+    <div class="container">
+      <div class="card">
+        <div class="container-fluid">
+          <div class="wrapper row">
+            <div class="preview col-md-6">
+              <div class="preview-pic tab-content">
+                <div class="form-group files">
+                  <input id="1" style="display: none" type="file" (change)="onFileUpload($event)" #selectFile1>
+                  <button (click)="selectFile1.click()">Select File</button>
+                  <button (click)="OnUploadFile()">Upload</button>
+                  <div class="image-preview">
+                    <img [src]="imagePreview">
+                  </div>
+                </div>
+              </div>
+
+              <ul class="preview-thumbnail nav nav-tabs">
+                <li>
+                  <a data-target="#pic-1" data-toggle="tab">
+                    <div class="form-group files">
+                      <input id="2" style="display: none" type="file" (change)="onFileUpload($event)" #selectFile2>
+                      <button (click)="selectFile2.click()">Select File</button>
+                      <button (click)="OnUploadFile()">Upload</button>
+                      <div class="image-preview">
+                        <img [src]="imagePreview">
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a data-target="#pic-2" data-toggle="tab">
+                    <div class="form-group files">
+                      <input id="3" style="display: none" type="file" (change)="onFileUpload($event)" #selectFile3>
+                      <button (click)="selectFile3.click()">Select File</button>
+                      <button (click)="OnUploadFile()">Upload</button>
+                      <div class="image-preview">
+                        <img [src]="imagePreview">
+                      </div>
+                    </div>
+                  </a>
+                </li>
+
+              </ul>
+
+            </div>
+            <div class="details col-md-6">
+              <h3 class="product-title">Details House</h3>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="name">Name :</label></div>
+                <div class="col-md-8">
+                  <input type="text" name="name" id="name" placeholder="Enter name house" class="form-control"
+                         formControlName="name">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="categories home">Categories home :</label></div>
+                <div class="col-md-8">
+                  <select class="form-control form-control-sm" style="width:70px;" name="categories" id="categories">
+                    <option> 1</option>
+                    <option> 2</option>
+                    <option> 3</option>
+                  </select>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="address">Address :</label></div>
+                <div class="col-md-8">
+                  <input type="text" name="address" id="address" placeholder="Enter address house " class="form-control"
+                         formControlName="address">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="bathroom">Bathroom :</label></div>
+                <div class="col-md-8">
+                  <input type="number" name="bathroom" id="bathroom" placeholder="Enter bathroom in house "
+                         class="form-control"
+                         formControlName="bathroom">
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="bedroom">Bedroom :</label></div>
+                <div class="col-md-8">
+                  <input type="number" name="bedroom" id="bedroom" placeholder="Enter bedroom in house "
+                         class="form-control"
+                         formControlName="bedroom">
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="description">Description :</label></div>
+                <div class="col-md-8">
+              <textarea type="textarea" id="description" placeholder="Enter description " class="form-control"
+                        formControlName="description"></textarea>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="price">Price/night :</label></div>
+                <div class="col-md-8">
+                  <span class="input-group-addon">
+                    <select>
+                      <option>USD</option>
+                    </select>
+                  </span>
+                  <span class="input-group-addon">
+                    <select class="form-control form-control-sm" style="width:80px;">
+                                      <option> USD</option>
+                                      <option> VND</option>
+                                      <option> EUR</option>
+                    </select>
+                  </span>
+                  <input type="text" name="price" id="price" placeholder="Enter price " step="0.01"
+                         class="form-control"
+                         formControlName="price">
+                </div>
+              </div>
+
+              <div class="action">
+                <button type="button" class="btn btn-success">Success</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<br><br>
+<hr>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <div id="homeTable" class="table table-bordred table-striped">
+          <table>
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Categories Home</th>
+              <th>Bathroom</th>
+              <th>Bedroom</th>
+              <th>Price</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of homeData | paginate: config">
+              <td>{{item.name}}</td>
+              <td>{{item.address}}</td>
+              <td>{{item.bathroom}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <pagination-controls
+            [maxSize]="maxSize"
+            [directionLinks]="directionLinks"
+            [autoHide]="autoHide"
+            [responsive]="responsive"
+            [previousLabel]="labels.previousLabel"
+            [nextLabel]="labels.nextLabel"
+            [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+            [screenReaderPageLabel]="labels.screenReaderPageLabel"
+            [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
+            (pageChange)="onPageChange($event)"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</html>
+
