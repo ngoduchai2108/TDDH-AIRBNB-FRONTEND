@@ -36,13 +36,13 @@ export class LoginComponent implements OnInit {
       const {value} = this.loginForm;
       // @ts-ignore
       this.authService.attempAuth(value).subscribe(next => {
-        this.tokenStorageService.saveToken(next.accessToken);
+        // @ts-ignore
+        this.tokenStorageService.saveToken(next.token);
         this.tokenStorageService.saveEmail(next.email);
         // @ts-ignore
         this.tokenStorageService.saveAuthor(next.authorities);
         this.isLoggedIn = true;
         this.roles = this.tokenStorageService.getAuthor();
-        window.location.reload();
         this.router.navigate(['/home']);
       }, error => {
         this.isLogInFailed = true;
