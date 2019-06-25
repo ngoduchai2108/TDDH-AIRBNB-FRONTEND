@@ -12,6 +12,7 @@ import {HomeComponent} from './home/home.component';
 import {UserComponent} from './user/user.component';
 import {AdminComponent} from './admin/admin.component';
 import { HouseManagementComponent } from './user/house-management/house-management.component';
+import { CreateListCategoriesHouseComponent } from './admin/create-list-categories-house/create-list-categories-house.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HouseManagementComponent } from './user/house-management/house-manageme
     UserComponent,
     AdminComponent,
     HouseManagementComponent,
+    CreateListCategoriesHouseComponent,
   ],
   imports: [
     HttpClientModule,
