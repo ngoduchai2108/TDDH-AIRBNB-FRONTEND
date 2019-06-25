@@ -21,4 +21,8 @@ export class CategorieshouseService {
     // @ts-ignore
     return this.http.delete<number>(this.API_CATE_URL, id);
   }
+
+  update(categoriesHouse: CategoriesHouse): Observable<CategoriesHouse> {
+    return this.http.put<CategoriesHouse>(this.API_CATE_URL, categoriesHouse);
+  }
 }
