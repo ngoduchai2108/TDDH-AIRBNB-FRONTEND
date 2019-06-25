@@ -11,12 +11,7 @@ import {CategorieshouseService} from '../../service/categorieshouse.service';
 export class CreateListCategoriesHouseComponent implements OnInit {
   categoriesEditForm: FormGroup;
   createCategoriesForm: FormGroup;
-  category1: CategoriesHouse = {id: 1, name: 'Biet Thu hang sang'};
-  category2: CategoriesHouse = {id: 2, name: 'Biet Thu cap 4'};
-  category3: CategoriesHouse = {id: 3, name: 'Biet Thu trung binh'};
-  category4: CategoriesHouse = {id: 4, name: 'Biet Thu 3*'};
-  category5: CategoriesHouse = {id: 5, name: 'Biet Thu 4*'};
-  categorieslist: CategoriesHouse[] = [this.category1, this.category2, this.category3, this.category4, this.category5];
+  categorieslist: CategoriesHouse[];
   indexofEdit = -1;
   message: string;
 
@@ -40,8 +35,10 @@ export class CreateListCategoriesHouseComponent implements OnInit {
     const r = confirm('Are u sure delete this categoryHouse?');
     if (r) {
       this.categoriesService.remove(categoriesHouse.id).subscribe(next => {
-        this.indexofEdit = -1;
         this.message = 'Deleted';
+        this.categoriesService.getCategories()
+        // tslint:disable-next-line:no-shadowed-variable
+          .subscribe(next => this.categorieslist = next, err => console.log(err));
       }, err => alert(err));
     }
   }
@@ -54,9 +51,16 @@ export class CreateListCategoriesHouseComponent implements OnInit {
   onEditCategory(category: CategoriesHouse) {
     if (this.categoriesEditForm.valid) {
       const {value} = this.categoriesEditForm;
-      this.categoriesService.update(value).subscribe(next => {
-        console.log('ok');
+      const data = {
+        id: category.id,
+        ...value
+      };
+      this.categoriesService.update(data).subscribe(next => {
         this.message = 'Edited';
+        this.indexofEdit = -1 ;
+        this.categoriesService.getCategories()
+        // tslint:disable-next-line:no-shadowed-variable
+          .subscribe(next => this.categorieslist = next, err => console.log(err));
       }, err => console.log(err));
     } else {
       this.message = 'Edit Form invalid';
@@ -66,10 +70,19 @@ export class CreateListCategoriesHouseComponent implements OnInit {
   onCreate() {
     if (this.createCategoriesForm.valid) {
       const {value} = this.createCategoriesForm;
-      this.categoriesService.update(value).subscribe(next => {
+      this.categoriesService.create(value).subscribe(next => {
         console.log('ok');
         this.message = 'Created';
-      }, err => console.log(err));
+        this.createCategoriesForm.reset();
+        this.categoriesService.getCategories()
+        // tslint:disable-next-line:no-shadowed-variable
+          .subscribe(next => this.categorieslist = next, err => {
+            console.log(err);
+          });
+      }, err => {
+        console.log(err);
+        this.message = err.error.message;
+      });
     }
   }
 }

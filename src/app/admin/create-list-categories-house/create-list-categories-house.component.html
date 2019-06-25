@@ -1,6 +1,6 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
-<div class="container">
+<div class="crudcategoriesbackground">
+<div class="container " >
   <div class="text-center"> [ {{message}} ]</div>
   <div class="row">
     <div class="col-md-6 border-right border-info">
@@ -28,7 +28,7 @@
         <table class="table user-list text-center">
           <thead>
           <tr>
-            <th><span>STT</span></th>
+            <th><span>No.</span></th>
             <th><span>Name</span></th>
             <th>&nbsp;</th>
           </tr>
@@ -59,7 +59,7 @@
           <tr *ngIf="i===indexofEdit">
             <td></td>
             <th colspan="2">
-              <form [formGroup]=categoriesEditForm (ngSubmit)="onEditCategory()">
+              <form [formGroup]=categoriesEditForm (ngSubmit)="onEditCategory(category)">
                 <div class="row">
                   <div class="col-md-9">
                     <input type="text" formControlName="name" class="form-control">
@@ -82,6 +82,6 @@
         </table>
       </div>
     </div>
-
+  </div>
   </div>
 </div>
