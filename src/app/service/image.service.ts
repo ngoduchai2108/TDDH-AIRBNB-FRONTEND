@@ -18,16 +18,19 @@ export class ImageService {
   //   return this.http.get<any>( this.API_URL + 'house');
   // }
   //
-  // remove(id: number): Observable<any> {
-  //   return this.http.delete<number>(this.API_URL + 'house/' + id);
-  // }
+  remove(id: number): Observable<any> {
+    return this.http.delete<number>(this.API_URL + '/house/' + id);
+  }
+  removeAllByHouseID(id: number): Observable<any> {
+    return this.http.delete<number>(this.API_URL + '/delete-all-files/' + id);
+  }
   //
   // update(house: any): Observable<any> {
   //   return this.http.put<any>(this.API_URL + 'house/' + house.id, house);
   // }
 
   create(houseid: any, img: any): Observable<any> {
-    return this.http.post<any>(this.API_URL + '/uploadFile/' + houseid, img);
+    return this.http.post<any>(this.API_URL + '/upload-file/' + houseid, img);
   }
 }
 

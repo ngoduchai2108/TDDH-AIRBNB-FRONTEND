@@ -4,6 +4,7 @@ import {HouseService} from '../../service/house-service.service';
 import {CategorieshouseService} from '../../service/categorieshouse.service';
 import {CategoriesHouse} from '../../model/CategoriesHouse';
 import {ImageService} from '../../service/image.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -45,15 +46,15 @@ export class HouseManagementComponent implements OnInit {
   };
   selecetdFile = [];
   imagePreview = [];
-  imagePreview1: string | ArrayBuffer;
-  imagePreview2: string | ArrayBuffer;
   formHouseData: FormGroup;
+  listhouse: any;
   private readonly INDEXCHILDIMAGES = [1, 2, 3, 4];
 
   constructor(private fb: FormBuilder,
               private houseService: HouseService,
               private categoriesService: CategorieshouseService,
-              private imgService: ImageService) {
+              private imgService: ImageService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -66,7 +67,9 @@ export class HouseManagementComponent implements OnInit {
       description: ['', [Validators.required, Validators.minLength(10)]],
       price: ['', [Validators.required, Validators.min(0)]],
     });
-    this.categoriesService.getCategories().subscribe(next => this.listCateGories = next, err => console.log(err));
+    this.categoriesService.getCategories()
+      .subscribe(next => this.listCateGories = next, err => console.log(err));
+    this.updateListHouse();
   }
 
   onFileUpload(event, index: number) {
@@ -84,14 +87,13 @@ export class HouseManagementComponent implements OnInit {
       const {value} = this.formHouseData;
       this.houseService.create(value).subscribe(next => {
         this.houseId = next;
-        const house = {
-          id: this.houseId,
-          ...value
-        };
         this.OnUploadFile(this.houseId);
-        console.log(house);
         this.createFail = false;
-      }, err => this.createFail = true );
+        this.updateListHouse();
+        this.formHouseData.reset();
+        this.imagePreview = [];
+        this.selecetdFile = [];
+      }, err => this.createFail = true);
 
     } else {
       this.createFail = true;
@@ -108,6 +110,28 @@ export class HouseManagementComponent implements OnInit {
           err => console.log(err));
       }
     }
+  }
+
+  updateListHouse() {
+    this.houseService.getListHouseByUser()
+      .subscribe(next => this.listhouse = next, err => console.log(err));
+  }
+
+  onDelete(house: any) {
+    const r = confirm('Are U sure delete this house');
+    if (r) {
+      // @ts-ignore
+      this.imgService.removeAllByHouseID(house.id).subscribe(
+        next => this.houseService.remove(house.id)
+          .subscribe(
+            ne => {
+              console.log('deleted this house');
+              this.updateListHouse();
+            }, err => console.log(err)),
+        error => console.log(error)
+      );
+    }
+
   }
 }
 
