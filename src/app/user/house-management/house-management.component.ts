@@ -49,6 +49,8 @@ export class HouseManagementComponent implements OnInit {
   formHouseData: FormGroup;
   listhouse: any;
   private readonly INDEXCHILDIMAGES = [1, 2, 3, 4];
+  filter: any;
+  p: any;
 
   constructor(private fb: FormBuilder,
               private houseService: HouseService,

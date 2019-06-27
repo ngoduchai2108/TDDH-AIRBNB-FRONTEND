@@ -25,15 +25,15 @@
     <div class="col-md-6">
       <div class="table-responsive">
         <div class="text-center"><h2>All Categories of House</h2></div>
-        <table class="table user-list text-center">
-          <thead>
+        <table class="table">
+          <thead class="thead-dark">
           <tr>
             <th><span>No.</span></th>
             <th><span>Name</span></th>
             <th>&nbsp;</th>
           </tr>
           </thead>
-          <tbody *ngFor="let category of categorieslist; index as i">
+          <tbody *ngFor="let category of categorieslist | filter: filter | paginate: { itemsPerPage: 5, currentPage: p} ;index as i">
           <tr>
             <td class="">
               {{i + 1}}
@@ -80,6 +80,9 @@
           </tr>
           </tbody>
         </table>
+        <ul class="pagination">
+          <pagination-controls (pageChange)="p = $event"> </pagination-controls>
+        </ul>
       </div>
     </div>
   </div>

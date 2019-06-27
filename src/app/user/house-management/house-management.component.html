@@ -189,7 +189,7 @@
             <td></td>
           </tr>
           <tbody>
-          <tr *ngFor="let house of listhouse; index as i ">
+          <tr *ngFor="let house of listhouse | filter: filter | paginate: { itemsPerPage: 5, currentPage: p}; index as i ">
             <td>{{i + 1}}</td>
             <td>{{house.name}}</td>
             <td>{{house.address}}</td>
@@ -214,6 +214,9 @@
           </tr>
           </tbody>
         </table>
+        <ul class="pagination">
+          <pagination-controls (pageChange)="p = $event"> </pagination-controls>
+        </ul>
       </div>
     </div>
   </div>
