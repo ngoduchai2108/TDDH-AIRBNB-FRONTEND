@@ -15,7 +15,7 @@ export class HouseService {
     // @ts-ignore
     return this.http.get<any>(this.API_URL + 'houses');
   }
-  getHouse(): Observable<any> {
+  getListHouseByUser(): Observable<any> {
     return this.http.get<any>( this.API_URL + 'house');
   }
 
