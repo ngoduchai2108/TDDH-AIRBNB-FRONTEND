@@ -163,7 +163,6 @@
                 <button type="submit" class="btn btn-success">Create</button>
               </div>
             </form>
-
           </div>
         </div>
       </div>
@@ -172,47 +171,51 @@
 </div>
 
 
-<!--<div class="container">-->
-<!--  <div class="row">-->
-<!--    <div class="col-md-12">-->
-<!--      <div class="table-responsive">-->
-<!--        <div id="homeTable" class="table table-bordred table-striped">-->
-<!--          <table>-->
-<!--            <thead>-->
-<!--            <tr>-->
-<!--              <th>Name</th>-->
-<!--              <th>Address</th>-->
-<!--              <th>Categories Home</th>-->
-<!--              <th>Bathroom</th>-->
-<!--              <th>Bedroom</th>-->
-<!--              <th>Price</th>-->
-<!--              <th>Edit</th>-->
-<!--              <th>Delete</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <tr *ngFor="let item of homeData | paginate: config">-->
-<!--              <td>{{item.name}}</td>-->
-<!--              <td>{{item.address}}</td>-->
-<!--              <td>{{item.bathroom}}</td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
-<!--          </table>-->
-<!--          <pagination-controls-->
-<!--            [maxSize]="maxSize"-->
-<!--            [directionLinks]="directionLinks"-->
-<!--            [autoHide]="autoHide"-->
-<!--            [responsive]="responsive"-->
-<!--            [previousLabel]="labels.previousLabel"-->
-<!--            [nextLabel]="labels.nextLabel"-->
-<!--            [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"-->
-<!--            [screenReaderPageLabel]="labels.screenReaderPageLabel"-->
-<!--            [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"-->
-<!--            (pageChange)="onPageChange($event)"></pagination-controls>-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+<div class="container" style="margin-top: 20px; font-family: 'Abyssinica SIL' " >
+  <h2 class="product-title text-center">List House</h2>
+  <div class="row">
+    <div class="table-responsive align-center">
+      <div id="homeTable" class="table table-bordred table-striped">
+        <table id="tableform" class="text-center">
+          <tr class="font-weight-bold">
+            <td>No.</td>
+            <td>Name</td>
+            <td class="col-md-3">Address</td>
+            <td class="col-md-2">Categories Home</td>
+            <td>Bathroom</td>
+            <td>Bedroom</td>
+            <td>Price (USD)</td>
+            <td></td>
+          </tr>
+          <tbody>
+          <tr *ngFor="let house of listhouse; index as i ">
+            <td>{{i + 1}}</td>
+            <td>{{house.name}}</td>
+            <td>{{house.address}}</td>
+            <td>{{house.categories.name}}</td>
+            <td>{{house.quantityBathroom}}</td>
+            <td>{{house.quantityBedroom}}</td>
+            <td>{{house.price}}</td>
+            <td style="width: 20%;">
+              <a class="table-link danger" [routerLink]="['/houses/edit',house.id]">
+									<span class="fa-stack edit">
+										<i class="fa fa-square fa-stack-2x"></i>
+										<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+									</span>
+              </a>
+              <a (click)="onDelete(house)" class="table-link danger">
+									<span class="fa-stack delete">
+										<i class="fa fa-square fa-stack-2x"></i>
+										<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+									</span>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 </html>
 
