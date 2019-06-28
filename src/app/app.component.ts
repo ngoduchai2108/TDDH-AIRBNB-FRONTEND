@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from './common/token/token-storage.service';
+import {$} from 'protractor';
 
 @Component({
   selector: 'app-root',
