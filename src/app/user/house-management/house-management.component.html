@@ -1,6 +1,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 
 <!DOCTYPE html>
@@ -23,7 +24,7 @@
             <div class="preview-pic tab-content">
               <div class="form-group files">
                 <input id="1" style="display: none" type="file" (change)="onFileUpload($event,0)" #selectFile1>
-                <button (click)="selectFile1.click()">Select File</button>
+                <button (click)="selectFile1.click()">Select Image</button>
                 <div *ngIf="selecetdFile[0]!==undefined" class="image-preview">
                   <img [src]="imagePreview[0]">
                 </div>
@@ -37,7 +38,7 @@
                   <div class="form-group files">
                     <input id="2" style="display: none" type="file" (change)="onFileUpload($event,indexOfChildImage)"
                            #selectFile2>
-                    <button (click)="selectFile2.click()">Select File</button>
+                    <button (click)="selectFile2.click()">Select Image</button>
                     <div *ngIf="selecetdFile[indexOfChildImage] !== undefined " class="image-preview">
                       <img [src]="imagePreview[indexOfChildImage]">
                     </div>
@@ -188,7 +189,7 @@
             <td></td>
           </tr>
           <tbody>
-          <tr *ngFor="let house of listhouse; index as i ">
+          <tr *ngFor="let house of listhouse | filter: filter | paginate: { itemsPerPage: 5, currentPage: p}; index as i ">
             <td>{{i + 1}}</td>
             <td>{{house.name}}</td>
             <td>{{house.address}}</td>
@@ -213,6 +214,9 @@
           </tr>
           </tbody>
         </table>
+        <ul class="pagination">
+          <pagination-controls (pageChange)="p = $event"> </pagination-controls>
+        </ul>
       </div>
     </div>
   </div>

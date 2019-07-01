@@ -30,4 +30,8 @@ export class HouseService {
   create(house: any): Observable<any> {
     return this.http.post<any>(this.API_URL + 'house', house);
   }
+
+  getHouse(id: number) {
+    return this.http.get<any>(this.API_URL + 'house/'+ id);
+  }
 }

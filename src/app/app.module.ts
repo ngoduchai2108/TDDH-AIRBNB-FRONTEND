@@ -14,6 +14,8 @@ import {AdminComponent} from './admin/admin.component';
 import { HouseManagementComponent } from './user/house-management/house-management.component';
 import { CreateListCategoriesHouseComponent } from './admin/create-list-categories-house/create-list-categories-house.component';
 import { EditHouseComponent } from './user/edit-house/edit-house.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { EditHouseComponent } from './user/edit-house/edit-house.component';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

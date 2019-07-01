@@ -14,6 +14,8 @@ export class CreateListCategoriesHouseComponent implements OnInit {
   categorieslist: CategoriesHouse[];
   indexofEdit = -1;
   message: string;
+  filter: any;
+  p: any;
 
   constructor(private categoriesService: CategorieshouseService,
               private fb: FormBuilder) {
