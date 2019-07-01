@@ -16,7 +16,8 @@ export class ImageService {
   //   return this.http.get<any>(this.API_URL + 'houses');
   // }
   getImage(id: number): Observable<any> {
-    return this.http.get<any>(this.API_URL + '/download-file/' + id);
+    // @ts-ignore
+    return this.http.get<any>(this.API_URL + '/download-file/' + id,{responseType: "blob"});
   }
 
   remove(id: number): Observable<any> {

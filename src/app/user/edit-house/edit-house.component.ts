@@ -5,6 +5,8 @@ import {CategoriesHouse} from "../../model/CategoriesHouse";
 import {HouseService} from "../../service/house-service.service";
 import {CategorieshouseService} from "../../service/categorieshouse.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {of} from "rxjs";
+import {IImageToShow} from "../../model/image-to-show";
 
 @Component({
   selector: 'app-edit-house',
@@ -13,7 +15,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class EditHouseComponent implements OnInit {
 
-  imageToShow: any;
+  listImageToShow: IImageToShow[] = [];
   formHouseData: FormGroup;
   editFail = false;
   listCateGories: CategoriesHouse[];
@@ -21,6 +23,10 @@ export class EditHouseComponent implements OnInit {
     categories: {name:''}
   };
   listCurrentImageId = [];
+  INDEXCHILDIMAGES = [1,2,3,4];
+  private selecetdFile: [];
+  delete1: any;
+  delete2: any;
 
   constructor(private  imageService: ImageService,
               private houseService: HouseService,
@@ -50,28 +56,35 @@ export class EditHouseComponent implements OnInit {
     }, error => console.log(error));
     this.cateService.getCategories().subscribe(next => {
       this.listCateGories = next;
-    })
-    // this.imageService.getListIdByHouseId(id).subscribe(next => this.listCurrentImageId = next);
-
+    });
+    this.imageService.getListIdByHouseId(id).subscribe(next => {this.listCurrentImageId = next; this.getAllImageFromService()  })
   }
 
-  createImageFromBlob(image: Blob) {
+  createImageFromBlob(image: Blob,idImage : number) {
     const reader = new FileReader();
     reader.addEventListener('load', () => {
-      this.imageToShow = reader.result;
+      const imageToShow = {
+        id: idImage,
+        image: reader.result
+      }
+      this.listImageToShow.push(imageToShow);
     }, false);
     if (image) {
       reader.readAsDataURL(image);
     }
   }
 
-  getImageFromService() {
-    this.imageService.getImage(72).subscribe(data => {
-      this.createImageFromBlob(data);
-      console.log(data);
+  getImageFromService(id:number) {
+    this.imageService.getImage(id).subscribe(data => {
+      this.createImageFromBlob(data,id);
     }, error => {
-      console.log(error);
+      console.log('aaa'+ error);
     });
+  }
+  getAllImageFromService(){
+    for ( var idImage of this.listCurrentImageId) {
+      this.getImageFromService(idImage);
+    }
   }
 
   editHouse() {
@@ -90,5 +103,24 @@ export class EditHouseComponent implements OnInit {
       });
     }
   }
+//
+//   onFileUpload($event: Event, number: number) {
+//     const reader = new FileReader();
+//     reader.onload = () => {
+//       this.listImageToShow[number] = reader.result;
+//     };
+//     this.selecetdFile[number] = event.target.files[0];
+//     reader.readAsDataURL(this.selecetdFile[number]);
+// }
+
+  deleteImage(id: number) {
+    const r = confirm('Are U sure delete this image');
+    if (r) {
+      this.imageService.remove(id).subscribe(next => {
+        console.log("delete this image");
+      }, error => console.log(error))
+    }
+  }
 }
+
 

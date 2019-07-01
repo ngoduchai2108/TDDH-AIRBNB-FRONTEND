@@ -24,7 +24,7 @@
             <div class="preview-pic tab-content">
               <div class="form-group files">
                 <input id="1" style="display: none" type="file" (change)="onFileUpload($event,0)" #selectFile1>
-                <button (click)="selectFile1.click()">Select File</button>
+                <button (click)="selectFile1.click()">Select Image</button>
                 <div *ngIf="selecetdFile[0]!==undefined" class="image-preview">
                   <img [src]="imagePreview[0]">
                 </div>
@@ -38,7 +38,7 @@
                   <div class="form-group files">
                     <input id="2" style="display: none" type="file" (change)="onFileUpload($event,indexOfChildImage)"
                            #selectFile2>
-                    <button (click)="selectFile2.click()">Select File</button>
+                    <button (click)="selectFile2.click()">Select Image</button>
                     <div *ngIf="selecetdFile[indexOfChildImage] !== undefined " class="image-preview">
                       <img [src]="imagePreview[indexOfChildImage]">
                     </div>
