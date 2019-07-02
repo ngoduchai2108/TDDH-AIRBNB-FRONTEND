@@ -21,7 +21,7 @@ export class ImageService {
   }
 
   remove(id: number): Observable<any> {
-    return this.http.delete<number>(this.API_URL + '/house/' + id);
+    return this.http.delete<number>(this.API_URL + '/delete-file/' + id);
   }
 
   removeAllByHouseID(id: number): Observable<any> {

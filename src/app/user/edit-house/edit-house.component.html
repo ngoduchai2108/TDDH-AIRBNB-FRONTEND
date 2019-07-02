@@ -7,7 +7,7 @@
             <div class="form-group files">
 <!--              <input id="1" style="display: none" type="file" (change)="onFileUpload($event,0)" #selectFile1>-->
 <!--              <button (click)="selectFile1.click()">Select File</button>-->
-              <button (click)="deleteImage(listImageToShow[0].id)">Delete</button>
+              <button (click)="deleteImage(listImageToShow[0].id,0)">Delete</button>
               <div class="image-preview">
                 <img [src]="listImageToShow[0].image" width="100%">
               </div>
@@ -19,7 +19,7 @@
 <!--                        <input id="2" style="display: none" type="file" (change)="onFileUpload($event,indexOfChildImage)"-->
 <!--                               #selectFile2>-->
 <!--                        <button (click)="selectFile2.click()">Select File</button>-->
-                        <button (click)="deleteImage(listImageToShow[indexOfChildImage].id)">Delete</button>
+                        <button (click)="deleteImage(listImageToShow[indexOfChildImage].id,indexOfChildImage)">Delete</button>
                         <div *ngIf="listImageToShow[indexOfChildImage] !== undefined " class="image-preview ">
                           <img [src]="listImageToShow[indexOfChildImage].image" width="100%" height="50%">
                         </div>

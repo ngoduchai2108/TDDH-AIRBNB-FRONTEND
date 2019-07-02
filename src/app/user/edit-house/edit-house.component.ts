@@ -116,13 +116,16 @@ export class EditHouseComponent implements OnInit {
 //     reader.readAsDataURL(this.selecetdFile[number]);
 // }
 
-  deleteImage(id: number) {
+  deleteImage(id: number, index: number) {
     const r = confirm('Are U sure delete this image');
     if (r) {
-      this.imageService.remove(id).subscribe(next => {
-
+      const img = this.listImageToShow[index];
+      this.imageService.remove(id).subscribe(() => {
+        this.listImageToShow = this.listImageToShow.filter(
+          t => t.id !== img.id
+        );
         console.log('delete this image');
-      }, error => console.log(error));
+      }, error => console.log('sssssssssss' + error));
     }
   }
 }
