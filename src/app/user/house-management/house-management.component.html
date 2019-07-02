@@ -188,7 +188,7 @@
             <td>Price (USD)</td>
             <td></td>
           </tr>
-          <tbody>
+          <tbody *ngIf="listhouse !== null">
           <tr *ngFor="let house of listhouse | filter: filter | paginate: { itemsPerPage: 5, currentPage: p}; index as i ">
             <td>{{i + 1}}</td>
             <td>{{house.name}}</td>
