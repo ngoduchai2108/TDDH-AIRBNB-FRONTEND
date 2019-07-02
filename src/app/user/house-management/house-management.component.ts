@@ -28,22 +28,7 @@ export class HouseManagementComponent implements OnInit {
     }) {
     }
   };
-  config = {
-    itemsPerPage: 5,
-    currentPage: 1,
-    totalItems: this.homeData.count
-  };
-  public maxSize = 7;
-  public directionLinks = true;
-  public autoHide = false;
-  public responsive = true;
-  public labels: any = {
-    previousLabel: '<--',
-    nextLabel: '-->',
-    screenReaderPaginationLabel: 'Pagination',
-    screenReaderPageLabel: 'page',
-    screenReaderCurrentLabel: `You're on page`
-  };
+
   selecetdFile = [];
   imagePreview = [];
   formHouseData: FormGroup;
