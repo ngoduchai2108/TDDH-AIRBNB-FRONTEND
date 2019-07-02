@@ -10,10 +10,12 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  form: FormGroup;
   loginForm: FormGroup;
   isLoggedIn = false;
   isLogInFailed = false;
   roles: string[] = [];
+  private formSubmitAttempt: boolean;
 
   constructor(
     private authService: AuthService,
@@ -34,6 +36,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.loginForm.valid) {
       const {value} = this.loginForm;
+      this.authService.login(this.form.value);
       // @ts-ignore
       this.authService.attempAuth(value).subscribe(next => {
         // @ts-ignore
@@ -48,5 +51,6 @@ export class LoginComponent implements OnInit {
         this.isLogInFailed = true;
       });
     } else {this.isLogInFailed = true; }
+    this.formSubmitAttempt = true;
   }
 }

@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ImageService} from "../../service/image.service";
-import {CategoriesHouse} from "../../model/CategoriesHouse";
-import {HouseService} from "../../service/house-service.service";
-import {CategorieshouseService} from "../../service/categorieshouse.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {of} from "rxjs";
-import {IImageToShow} from "../../model/image-to-show";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ImageService} from '../../service/image.service';
+import {CategoriesHouse} from '../../model/CategoriesHouse';
+import {HouseService} from '../../service/house-service.service';
+import {CategorieshouseService} from '../../service/categorieshouse.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {of} from 'rxjs';
+import {IImageToShow} from '../../model/image-to-show';
 
 @Component({
   selector: 'app-edit-house',
@@ -19,11 +19,11 @@ export class EditHouseComponent implements OnInit {
   formHouseData: FormGroup;
   editFail = false;
   listCateGories: CategoriesHouse[];
-  currentHouse ={
-    categories: {name:''}
+  currentHouse = {
+    categories: {name: ''}
   };
   listCurrentImageId = [];
-  INDEXCHILDIMAGES = [1,2,3,4];
+  INDEXCHILDIMAGES = [1, 2, 3, 4];
   private selecetdFile: [];
   delete1: any;
   delete2: any;
@@ -52,21 +52,24 @@ export class EditHouseComponent implements OnInit {
     this.houseService.getHouse(id).subscribe(next => {
       this.currentHouse = next;
       console.log(next);
-      this.formHouseData.patchValue(this.currentHouse)
+      this.formHouseData.patchValue(this.currentHouse);
     }, error => console.log(error));
     this.cateService.getCategories().subscribe(next => {
       this.listCateGories = next;
     });
-    this.imageService.getListIdByHouseId(id).subscribe(next => {this.listCurrentImageId = next; this.getAllImageFromService()  })
+    this.imageService.getListIdByHouseId(id).subscribe(next => {
+      this.listCurrentImageId = next;
+      this.getAllImageFromService();
+    });
   }
 
-  createImageFromBlob(image: Blob,idImage : number) {
+  createImageFromBlob(image: Blob, idImage: number) {
     const reader = new FileReader();
     reader.addEventListener('load', () => {
       const imageToShow = {
         id: idImage,
         image: reader.result
-      }
+      };
       this.listImageToShow.push(imageToShow);
     }, false);
     if (image) {
@@ -74,21 +77,22 @@ export class EditHouseComponent implements OnInit {
     }
   }
 
-  getImageFromService(id:number) {
+  getImageFromService(id: number) {
     this.imageService.getImage(id).subscribe(data => {
-      this.createImageFromBlob(data,id);
+      this.createImageFromBlob(data, id);
     }, error => {
-      console.log('aaa'+ error);
+      console.log('aaa' + error);
     });
   }
-  getAllImageFromService(){
-    for ( var idImage of this.listCurrentImageId) {
+
+  getAllImageFromService() {
+    for (const idImage of this.listCurrentImageId) {
       this.getImageFromService(idImage);
     }
   }
 
   editHouse() {
-    if (this.formHouseData.valid){
+    if (this.formHouseData.valid) {
       const {value} = this.formHouseData;
       const data = {
         ...this.currentHouse,
@@ -97,12 +101,14 @@ export class EditHouseComponent implements OnInit {
       console.log(data);
       this.houseService.update(data).subscribe(next => {
         this.router.navigate(['/houses']),
+          // tslint:disable-next-line:no-unused-expression
           error => {
-          console.log(error);
-          }
+            console.log(error);
+          };
       });
     }
   }
+
 //
 //   onFileUpload($event: Event, number: number) {
 //     const reader = new FileReader();
@@ -117,8 +123,8 @@ export class EditHouseComponent implements OnInit {
     const r = confirm('Are U sure delete this image');
     if (r) {
       this.imageService.remove(id).subscribe(next => {
-        console.log("delete this image");
-      }, error => console.log(error))
+        console.log('delete this image');
+      }, error => console.log(error));
     }
   }
 }

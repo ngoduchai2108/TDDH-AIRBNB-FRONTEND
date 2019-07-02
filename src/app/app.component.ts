@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from './common/token/token-storage.service';
-import {$} from 'protractor';
+import {Observable} from 'rxjs';
+import {AuthService} from './common/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,14 @@ import {$} from 'protractor';
 export class AppComponent implements OnInit {
   private roles: string[];
   private authority: string;
+  info: any;
+  isLoggedIn$: Observable<boolean>;
 
-  constructor(private tokenStorage: TokenStorageService) {
+
+  constructor(private tokenStorage: TokenStorageService,
+              private tokenStorageService: TokenStorageService,
+              private authService: AuthService
+           ) {
   }
 
   ngOnInit() {
@@ -29,5 +36,16 @@ export class AppComponent implements OnInit {
         return true;
       });
     }
+    this.isLoggedIn$ =  this.authService.isLoggedIn;;
+
+    this.info = {
+      token: this.tokenStorageService.getToken()
+    };
+
+  }
+
+  logout() {
+    this.authService.logout();
+    window.location.reload();
   }
 }

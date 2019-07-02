@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class HouseService {
-  private readonly API_URL = 'http://localhost:8080/api/auth/';
+  private readonly API_URL = 'http://192.168.2.158:8080/api/auth/';
 
   constructor(private http: HttpClient) {
   }

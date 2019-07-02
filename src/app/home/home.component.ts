@@ -20,9 +20,4 @@ export class HomeComponent implements OnInit {
     };
   }
 
-
-  logout() {
-    this.tokenStorageService.logOut();
-    window.location.reload();
-  }
 }

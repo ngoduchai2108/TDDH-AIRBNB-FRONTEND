@@ -1,16 +1,6 @@
-
-
-<!--            <div *ngIf="authority === 'user'|| authority==='admin'" class="nav-item">-->
-<!--              <a class="nav-link" routerLink="user">User Board</a>-->
-<!--            </div>-->
-<!--            <div *ngIf="authority === 'admin'" class="nav-item">-->
-<!--              <a class="nav-link" routerLink="admin">Admin Board</a>-->
-<!--            </div>-->
-
-
 <div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#" src=""><img src="../assets/logo_airbnb_icon.png" height="30px" /></a>
+    <a class="navbar-brand" href="home" src=""><img src="../assets/logo_airbnb_icon.png" height="30px"/></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -22,37 +12,48 @@
           <a class="nav-link" routerLink="home">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="#">Service</a>
+          <a class="nav-link" routerLink="houses">Create House</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="#">Contact</a>
-        </li>
-        <li class="collapse navbar-collapse" id="navbarSupportedContent-4">
+                <li class="collapse navbar-collapse" id="navbarSupportedContent-4">
+
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
-             aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-user"></i> Profile </a>
-          <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-            <a class="dropdown-item" href="#">My account</a>
-            <a class="dropdown-item" href="#">Log out</a>
+          <div class="btn-group">
+            <button class="btn btn-primary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton" data-toggle="dropdown">
+              Tutorials
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Javascript</a>
+              <a class="dropdown-item" href="#">Css</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Bootstrap</a>
+            </div>
           </div>
         </li>
-        <div class="md-form my-0">
-          <input class="form-control offset-md-10" type="text" placeholder="Search" aria-label="Search">
-        </div>
+
+        <li class="nav-item">
+          <div class="md-form my-0">
+            <input class="form-control offset-md-8" type="text" placeholder="Search" aria-label="Search">
+          </div>
+        </li>
       </ul>
     </div>
     <ul class="nav navbar-nav navbar-right">
-      <li class="nav-item">
-        <a routerLink="login/" class="nav-link">Login</a>
+      <li class="nav-item" >
+        <a routerLink="login/" class="nav-link" > Login</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item"   >
         <a routerLink="signup" class="nav-link">Register</a>
       </li>
+      <li class="nav-item" *ngIf="isLoggedIn$ | async as isLoggedIn" >
+        <a (click)="logout()"  *ngIf="isLoggedIn" routerLink="home" class="nav-link"><i class="fas fa-sign-in-alt"></i>Logout</a>
+      </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">
-        <img src="assets/icon_cart.png">
-      </a></li>
+        <a routerLink="home" class="nav-link">
+          <img src="assets/icon_cart.png">
+        </a>
+      </li>
     </ul>
   </nav>
 </div>

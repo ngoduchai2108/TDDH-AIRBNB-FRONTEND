@@ -6,8 +6,8 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private readonly USER_URL = 'http://localhost:8080/api/test/user';
-  private readonly ADMIN_URL = 'http://localhost:8080/api/test/admin';
+  private readonly USER_URL = 'http://192.168.2.158:8080/api/test/user';
+  private readonly ADMIN_URL = 'http://192.168.2.158:8080/api/test/admin';
 
   constructor(private http: HttpClient) {
   }

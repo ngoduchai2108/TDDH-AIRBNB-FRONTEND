@@ -7,8 +7,15 @@ import {RegisterComponent} from './register/register.component';
 import {UserComponent} from './user/user.component';
 import {HouseManagementComponent} from './user/house-management/house-management.component';
 import {EditHouseComponent} from './user/edit-house/edit-house.component';
+import {AuthGuard} from './common/auth/Auth.Guard';
+
 
 const routes: Routes = [
+  { path: '',
+    component: HomeComponent,
+    canActivate: [AuthGuard] },
+  { path: 'login',
+    component: LoginComponent },
   {
     path: 'home',
     component: HomeComponent

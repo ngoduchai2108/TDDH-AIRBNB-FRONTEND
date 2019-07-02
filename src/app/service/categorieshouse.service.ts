@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class CategorieshouseService {
-  private readonly API_CATE_URL = 'http://localhost:8080/api/auth/categories';
+  private readonly API_CATE_URL = 'http://192.168.2.158:8080/api/auth/categories';
 
   constructor(private http: HttpClient) {
   }

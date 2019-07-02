@@ -15,7 +15,6 @@ import {Router} from '@angular/router';
 export class HouseManagementComponent implements OnInit {
   listCateGories: CategoriesHouse[];
   houseId: number;
-  formData;
   createFail: boolean;
   homeData = {
     count: 60, data: [], push(row: {

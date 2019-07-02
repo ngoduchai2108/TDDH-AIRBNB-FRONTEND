@@ -2,3 +2,14 @@
 .bodyHome{
   background-image: url('https://uphinh.org/images/2019/06/19/hieuunganh.com_5d0a08fbc4c43.png');
 }
+.navbar-center {
+  margin-left: 25% !important;
+  /* cho can ra giua ma khong dong den display cua thuoc tinh */
+}
+
+.navbar-nav a {
+  color: white !important;
+}
+.dropdown-menu {
+  background-color: gray !important;
+}
