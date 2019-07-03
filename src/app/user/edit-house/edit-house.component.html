@@ -7,10 +7,14 @@
             <div class="form-group files">
               <input #selectFile1 (change)="onFileUpload($event,0,houseId)" id="1" style="display: none" type="file">
               <button (click)="selectFile1.click()" *ngIf="listImageToShow[0] === undefined">Select File</button>
-              <button (click)="deleteImage(listImageToShow[0].id,0)" *ngIf="listImageToShow[0] !== undefined">Delete
-              </button>
               <div *ngIf="listImageToShow[0] !== undefined" class="image-preview">
-                <img [src]="listImageToShow[0].image" width="100%">
+                <div class="box1">
+                  <img [src]="listImageToShow[0].image" width="100%">
+                  <h3 class="title">Williamson</h3>
+                  <ul class="icon">
+                    <li><a (click)="deleteImage(listImageToShow[0].id,0)"><i class="fa fa-close"></i></a></li>
+                  </ul>
+                </div>
               </div>
               <div class="row">
                 <ul class="preview-thumbnail nav nav-tabs">
@@ -19,15 +23,18 @@
                       <div class="form-group files">
                         <input #selectFile2 (change)="onFileUpload($event,indexOfChildImage,houseId)" id="2"
                                style="display: none"
-                               type="file">
+                               type="file" >
                         <button (click)="selectFile2.click()" *ngIf="listImageToShow[indexOfChildImage] === undefined">
                           Select File
                         </button>
-                        <button (click)="deleteImage(listImageToShow[indexOfChildImage].id,indexOfChildImage)"
-                                *ngIf="listImageToShow[0] !== undefined">Delete
-                        </button>
                         <div *ngIf="listImageToShow[indexOfChildImage] !== undefined " class="image-preview ">
-                          <img [src]="listImageToShow[indexOfChildImage].image" height="50%" width="100%">
+                          <div class="box1">
+                            <img [src]="listImageToShow[indexOfChildImage].image" height="50%" width="100%">
+                            <h3 class="title">Williamson</h3>
+                            <ul class="icon">
+                              <li><a (click)="deleteImage(listImageToShow[indexOfChildImage].id,indexOfChildImage)"><i class="fa fa-close"></i></a></li>
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </a>
@@ -37,7 +44,6 @@
             </div>
           </div>
         </div>
-
         <div class="details col-md-6">
           <h2 class="product-title">Edit House</h2>
           <form (ngSubmit)="editHouse()" [formGroup]="formHouseData" class="font">
@@ -49,7 +55,6 @@
                        type="text">
               </div>
             </div>
-
             <div class="row">
               <div class="col-md-4">
                 <label class="categories home">Categories home :</label></div>
@@ -61,7 +66,6 @@
                 </select>
               </div>
             </div>
-
             <div class="row">
               <div class="col-md-4">
                 <label class="address">Address :</label></div>
@@ -71,7 +75,6 @@
                        type="text">
               </div>
             </div>
-
             <div class="row">
               <div class="col-md-4">
                 <label class="bathroom">Bathroom :</label></div>
@@ -81,8 +84,6 @@
                        type="number">
               </div>
             </div>
-
-
             <div class="row">
               <div class="col-md-4">
                 <label class="bedroom">Bedroom :</label></div>
@@ -92,8 +93,6 @@
                        type="number">
               </div>
             </div>
-
-
             <div class="row">
               <div class="col-md-4">
                 <label class="description">Description :</label></div>
@@ -102,7 +101,6 @@
                         type="textarea"></textarea>
               </div>
             </div>
-
             <div class="row">
               <div class="col-md-4">
                 <label class="price">Price/night :</label></div>
@@ -148,7 +146,6 @@
             <div *ngIf="editFail" class="alert alert-danger">
               Edit Failed, Please reload page to try again.
             </div>
-
             <div class="action">
               <button class="btn btn-success" type="submit">Update</button>
             </div>

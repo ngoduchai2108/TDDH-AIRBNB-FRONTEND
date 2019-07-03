@@ -13,7 +13,6 @@ import {IImageToShow} from '../../model/image-to-show';
   styleUrls: ['./edit-house.component.scss']
 })
 export class EditHouseComponent implements OnInit {
-
   listImageToShow: IImageToShow[] = [];
   immmmgg = [];
   formHouseData: FormGroup;
@@ -50,7 +49,6 @@ export class EditHouseComponent implements OnInit {
     // this.getImageFromService();
     const id = +this.route.snapshot.paramMap.get('id');
     this.houseId = id;
-
     this.houseService.getHouse(id).subscribe(next => {
       this.currentHouse = next;
       console.log(next);
@@ -118,7 +116,6 @@ export class EditHouseComponent implements OnInit {
 //     this.selecetdFile[number] = event.target.files[0];
 //     reader.readAsDataURL(this.selecetdFile[number]);
 // }
-
   deleteImage(id: number, index: number) {
     const r = confirm('Are U sure delete this image');
     if (r) {
@@ -149,8 +146,6 @@ export class EditHouseComponent implements OnInit {
     const fd = new FormData();
     fd.append('file', this.selecetdFile[index], this.selecetdFile[index].name);
     this.imageService.create(houseId, fd).subscribe(next => console.log('ok'),
-          err => console.log(err));
-      }
+      err => console.log(err));
+  }
 }
-
-
