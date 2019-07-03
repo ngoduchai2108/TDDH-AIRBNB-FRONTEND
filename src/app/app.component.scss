@@ -1,4 +1,34 @@
+@charset "UTF-8";
 
-.bodyHome{
-  background-image: url('https://uphinh.org/images/2019/06/19/hieuunganh.com_5d0a08fbc4c43.png');
+body a {
+  color: black !important;
+  font-family: "Roboto" !important;
+  /* dung de ghi de va de bootstrap.min.css tren style.css no moi load duoc */
+}
+
+.none_nav {
+  background: none !important; /* ghi de */
+  border: none !important;
+}
+
+.navbar-center {
+  margin-left: 65% !important;
+  /* cho can ra giua ma khong dong den display cua thuoc tinh */
+}
+
+.navbar-nav a {
+  color: white !important;
+  font-size: 17px;
+}
+
+.active > a {
+  color: #faf4ff !important;
+  background: none !important;
+  font-weight: bold;
+}
+
+.open > a {
+  color: black !important;
+  background: none !important;
+  font-weight: bold;
 }

@@ -9,7 +9,7 @@ body a {
 #header {
   height: 662px;
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-  url(https://d3nuqriibqh3vw.cloudfront.net/media-youtube/1AtjOKph7-k.jpg) no-repeat center center fixed;
+  url(https://uniqix.com/wp-content/uploads/2018/06/airbnb.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -28,10 +28,11 @@ body a {
 
 .navbar-nav a {
   color: white !important;
+  font-size: 17px;
 }
 
 .active > a {
-  color: black !important;
+  color: #faf4ff !important;
   background: none !important;
   font-weight: bold;
 }
@@ -49,9 +50,7 @@ body a {
 .event_header {
   text-align: center;
   margin-top: 216px;
-  color: orangered;
 }
-
 
 .event_header > button {
   font-family: serif;
@@ -64,6 +63,7 @@ body a {
   width: 48px;
   height: 48px;
 }
+
 .image-content > img {
   width: 350px;
   height: 310px;
@@ -121,7 +121,7 @@ body a {
   background: black;
   padding: 32px;
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-  url(https://cdn57.androidauthority.net/wp-content/uploads/2019/02/airbnb-plus.jpg) no-repeat center center;
+  url(http://getwallpapers.com/wallpaper/full/4/3/7/545819.jpg) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
