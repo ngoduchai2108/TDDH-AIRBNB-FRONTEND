@@ -1,188 +1,174 @@
-<div *ngIf="info.token else loggedOut">
-  <h2> Your Information</h2>
-  <div>
-    Email: {{info.email}}
-    <br>
-    Roles: {{info.author}}
-    <br>
+<body>
+<div id="header" class="container-fluid">
+  <nav class="navbar navbar-default none_nav">
+    <div class="container-fluid">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse"
+           id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-center">
+          <!-- active de dung lam dinh vi ve trang chu -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle"
+               data-toggle="dropdown" role="button" aria-haspopup="true"
+               aria-expanded="false">Dropdown <span class="caret"></span></a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+  </nav>
+  <!-- /.container-fluid -->
+  <div class="event_header container wow zoomIn">
+    <!--          <span style="font-size: 30px; font-family: serif;">Hosted journeys to extraordinary places</span><br/>-->
+    <!--          <button>Learn more</button>-->
   </div>
-  <button class="btn btn-secondary" (click)="logout()"> Logout</button>
 </div>
-<ng-template #loggedOut>
-  <body>
-  <div id="header" class="container-fluid">
-    <nav class="navbar navbar-default none_nav">
-      <div class="container-fluid">
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse"
-             id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-center">
-            <!-- active de dung lam dinh vi ve trang chu -->
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle"
-                 data-toggle="dropdown" role="button" aria-haspopup="true"
-                 aria-expanded="false">Dropdown <span class="caret"></span></a>
-            </li>
-          </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+<!-- ket thuc header trang chu -->
+
+<div id="info" class="container">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-duration="2s">
+
+      <div class="image-content">
+        <img src="https://a0.muscache.com/im/pictures/52aa45c1-d168-41d5-9149-445c8787358f.jpg?aki_policy=x_large"/><br/>
+        <span class="font-content">Cooking classes</span><br/>
+        <span>Sample local flavors and take home new skill with hand-on cooking classes by local expect</span>
       </div>
-    </nav>
-    <!-- /.container-fluid -->
-    <div class="event_header container wow zoomIn">
-      <span style="font-size: 30px; font-family: serif;">Hosted journeys to extraordinary places</span><br/>
-      <button>Learn more</button>
     </div>
-  </div>
-  <!-- ket thuc header trang chu -->
-  <div id="info" class="container">
-    <div class="row">
-      <div class="col-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-duration="2s">
+    <div class="col-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-duration="2s">
 
-        <div class="image-content">
-          <img
-            src="https://a0.muscache.com/im/pictures/52aa45c1-d168-41d5-9149-445c8787358f.jpg?aki_policy=x_large"/><br/>
-          <span class="font-content">Cooking classes</span><br/>
-          <span>Sample local flavors and take home new skill with hand-on cooking classes by local expect</span>
-        </div>
+      <div class="image-content">
+        <img src="https://a0.muscache.com/im/pictures/bbaee069-8069-459d-aebd-f527b9ed72e8.jpg?aki_policy=x_large"/><br/>
+        <span class="font-content">Surting</span><br/>
+        <span>Catch a ware with experiences hand-picked by the Word Surf League and hosted by a pro</span>
       </div>
-      <div class="col-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-duration="2s">
+    </div>
 
-        <div class="image-content">
-          <img
-            src="https://a0.muscache.com/im/pictures/bbaee069-8069-459d-aebd-f527b9ed72e8.jpg?aki_policy=x_large"/><br/>
-          <span class="font-content">Surting</span><br/>
-          <span>Catch a ware with experiences hand-picked by the Word Surf League and hosted by a pro</span>
-        </div>
-      </div>
+    <div class="col-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-duration="2s">
 
-      <div class="col-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-duration="2s">
-
-        <div class="image-content">
-          <img
-            src="https://a0.muscache.com/im/pictures/4e8700d7-49f3-4165-b685-0c59524a1186.jpg?aki_policy=x_large"/><br/>
-          <span class="font-content">Concerts</span><br/>
-          <span>Feel the rhythm with intimate shows in unique spaces and listen to live music like never before</span>
-        </div>
+      <div class="image-content">
+        <img src="https://a0.muscache.com/im/pictures/4e8700d7-49f3-4165-b685-0c59524a1186.jpg?aki_policy=x_large"/><br/>
+        <span class="font-content">Concerts</span><br/>
+        <span>Feel the rhythm with intimate shows in unique spaces and listen to live music like never before</span>
       </div>
     </div>
   </div>
-  <!-- Ket thuc gioi thieu ve trang web -->
-  <div id="title-product" class="container">
-    <span> Recommended for you</span>
-    <div class="row">
-      <div class="col-md-3 col-sm-6 ">
-        <div class="product">
-          <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
-          <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 ">
-        <div class="product">
-          <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
-          <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 ">
-        <div class="product">
-          <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
-          <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 ">
-        <div class="product">
-          <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
-          <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
-        </div>
+</div>
+<!-- Ket thuc gioi thieu ve trang web -->
+
+<div id="title-product" class="container">
+  <span> Recommended for you</span>
+  <div class="row">
+    <div class="col-md-3 col-sm-6 ">
+      <div class="product">
+        <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
+        <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
       </div>
     </div>
-    <!-- 		het hang san pham 1 -->
-    <div class="row">
-      <div class="col-md-3 col-sm-6 ">
-        <div class="product">
-          <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
-          <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 ">
-        <div class="product">
-          <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
-          <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 ">
-        <div class="product">
-          <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
-          <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 ">
-        <div class="product">
-          <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
-          <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
-        </div>
+    <div class="col-md-3 col-sm-6 ">
+      <div class="product">
+        <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
+        <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
       </div>
     </div>
-    <!-- het hang san pham 2 -->
-    <div class="row">
-      <div class="col-md-3 col-sm-6 ">
-        <div class="product">
-          <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
-          <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
-        </div>
+    <div class="col-md-3 col-sm-6 ">
+      <div class="product">
+        <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
+        <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
       </div>
-      <div class="col-md-3 col-sm-6 ">
-        <div class="product">
-          <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
-          <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 ">
-        <div class="product">
-          <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
-          <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 ">
-        <div class="product">
-          <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
-          <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
-        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 ">
+      <div class="product">
+        <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
+        <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
       </div>
     </div>
   </div>
-  <!-- Ket thuc san pham -->
-  <div id="footer" class="container-fluid">
-    <div class="row">
-      <div class="col-sm-4 col-md-4">
-        <p>
-          <span class="title-footer">THÔNG TIN CỬA HÀNG</span>
-        </p>
-        <span> Trang web của chúng tôi tràn đầy cảm hứng và có trang
-  					phục mới nhất từ thời trang. Hãy ngồi trước ghế của bạn và để chúng
-  					tôi truyền cảm hứng cho bạn. Duyệt trang web để tìm trang phục bạn
-  					yêu thích, nhận buzz thời trang mới nhất từ H & M.</span>
-
+  <!-- 		het hang san pham 1 -->
+  <div class="row">
+    <div class="col-md-3 col-sm-6 ">
+      <div class="product">
+        <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
+        <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
       </div>
-      <div class="col-sm-4 col-md-4">
-        <p>
-          <span class="title-footer">LIÊN HỆ</span>
-        </p>
-        <span>Hà Nội, Thanh Xuân, Thượng Đình, Khu đô thị Royal City,
-  					Hầm 1</span>
-        <span>SĐT : 01684957862</span>
+    </div>
+    <div class="col-md-3 col-sm-6 ">
+      <div class="product">
+        <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
+        <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
       </div>
-      <div class="col-sm-4 col-md-4">
-        <p>
-          <span class="title-footer">GÓP Y</span>
-        </p>
-        <input class="footer-text" type="text" placeholder="Email"/>
-        <textarea class="footer-text" rows="4" cols="50" placeholder="Nội dung"></textarea>
-        <button class="footer-text-button">ĐỒNG Ý</button>
+    </div>
+    <div class="col-md-3 col-sm-6 ">
+      <div class="product">
+        <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
+        <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 ">
+      <div class="product">
+        <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
+        <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
       </div>
     </div>
   </div>
+  <!-- het hang san pham 2 -->
+  <div class="row">
+    <div class="col-md-3 col-sm-6 ">
+      <div class="product">
+        <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
+        <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 ">
+      <div class="product">
+        <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
+        <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 ">
+      <div class="product">
+        <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
+        <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 ">
+      <div class="product">
+        <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
+        <br/><span>Paris</span><br/> <span class="price">150.000 VND</span>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Ket thuc san pham -->
+<div id="footer" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4 col-md-4">
+      <p>
+        <span class="title-footer">STORE INFORMATION</span>
+      </p>
+      <span> Our website is full of inspiration and has pages
+          Latest dress from fashion. Sit in front of your chair and leave them
+          I inspire you. Browse the website to find your outfit
+          Favorite, get the latest fashion buzz from AirBnB.</span>
 
-  </body>
-
-</ng-template>
+    </div>
+    <div class="col-sm-4 col-md-4">
+      <p>
+        <span class="title-footer">CONTACT</span>
+      </p>
+      <span> Hanoi, Thanh Xuan, Thuong Dinh, Royal City Urban Area,
+          Tunnel 1</span>
+      <br>
+      <span>PHONE : 01234578</span>
+    </div>
+    <div class="col-sm-4 col-md-4">
+      <p>
+        <span class="title-footer">MAILBOX</span>
+      </p>
+      <input class="footer-text" type="text" placeholder="Email"/>
+      <textarea class="footer-text" rows="4" cols="50" placeholder="Content"></textarea>
+      <button class="footer-text-button">AGREE</button>
+    </div>
+  </div>
+</div>
+</body>
