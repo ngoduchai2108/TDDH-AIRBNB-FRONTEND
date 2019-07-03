@@ -1,4 +1,4 @@
 export interface IImageToShow {
   id: number;
-  image: any;
+  image: string|ArrayBuffer;
 }

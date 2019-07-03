@@ -5,10 +5,11 @@
         <div class="col-md-6">
           <div class="preview-pic tab-content">
             <div class="form-group files">
-<!--              <input id="1" style="display: none" type="file" (change)="onFileUpload($event,0)" #selectFile1>-->
-<!--              <button (click)="selectFile1.click()">Select File</button>-->
-              <button (click)="deleteImage(listImageToShow[0].id,0)">Delete</button>
-              <div class="image-preview">
+              <input #selectFile1 (change)="onFileUpload($event,0,houseId)" id="1" style="display: none" type="file">
+              <button (click)="selectFile1.click()" *ngIf="listImageToShow[0] === undefined">Select File</button>
+              <button (click)="deleteImage(listImageToShow[0].id,0)" *ngIf="listImageToShow[0] !== undefined">Delete
+              </button>
+              <div *ngIf="listImageToShow[0] !== undefined" class="image-preview">
                 <img [src]="listImageToShow[0].image" width="100%">
               </div>
               <div class="row">
@@ -16,12 +17,17 @@
                   <li *ngFor="let indexOfChildImage of INDEXCHILDIMAGES" class="col-md-3">
                     <a data-target="#pic-1" data-toggle="tab">
                       <div class="form-group files">
-<!--                        <input id="2" style="display: none" type="file" (change)="onFileUpload($event,indexOfChildImage)"-->
-<!--                               #selectFile2>-->
-<!--                        <button (click)="selectFile2.click()">Select File</button>-->
-                        <button (click)="deleteImage(listImageToShow[indexOfChildImage].id,indexOfChildImage)">Delete</button>
+                        <input #selectFile2 (change)="onFileUpload($event,indexOfChildImage,houseId)" id="2"
+                               style="display: none"
+                               type="file">
+                        <button (click)="selectFile2.click()" *ngIf="listImageToShow[indexOfChildImage] === undefined">
+                          Select File
+                        </button>
+                        <button (click)="deleteImage(listImageToShow[indexOfChildImage].id,indexOfChildImage)"
+                                *ngIf="listImageToShow[0] !== undefined">Delete
+                        </button>
                         <div *ngIf="listImageToShow[indexOfChildImage] !== undefined " class="image-preview ">
-                          <img [src]="listImageToShow[indexOfChildImage].image" width="100%" height="50%">
+                          <img [src]="listImageToShow[indexOfChildImage].image" height="50%" width="100%">
                         </div>
                       </div>
                     </a>
@@ -34,13 +40,13 @@
 
         <div class="details col-md-6">
           <h2 class="product-title">Edit House</h2>
-          <form class="font" [formGroup]="formHouseData" (ngSubmit)="editHouse()">
+          <form (ngSubmit)="editHouse()" [formGroup]="formHouseData" class="font">
             <div class="row">
               <div class="col-md-4">
                 <label class="name">Name :</label></div>
               <div class="col-md-8">
-                <input type="text" name="name" id="name" placeholder="Enter name house" class="form-control"
-                       formControlName="name">
+                <input class="form-control" formControlName="name" id="name" name="name" placeholder="Enter name house"
+                       type="text">
               </div>
             </div>
 
@@ -48,8 +54,8 @@
               <div class="col-md-4">
                 <label class="categories home">Categories home :</label></div>
               <div class="col-md-8">
-                <select class="form-control form-control-sm" style="width:100%;" name="categories" id="categories"
-                        formControlName="categories">
+                <select class="form-control form-control-sm" formControlName="categories" id="categories" name="categories"
+                        style="width:100%;">
                   <option *ngFor="let cate of listCateGories" [ngValue]="cate">{{cate.name}}</option>
                   <option [ngValue]="currentHouse.categories" selected>{{currentHouse.categories.name}}</option>
                 </select>
@@ -60,9 +66,9 @@
               <div class="col-md-4">
                 <label class="address">Address :</label></div>
               <div class="col-md-8">
-                <input type="text" name="address" id="address" placeholder="Enter address house "
-                       class="form-control"
-                       formControlName="address">
+                <input class="form-control" formControlName="address" id="address" name="address"
+                       placeholder="Enter address house "
+                       type="text">
               </div>
             </div>
 
@@ -70,9 +76,9 @@
               <div class="col-md-4">
                 <label class="bathroom">Bathroom :</label></div>
               <div class="col-md-8">
-                <input type="number" name="bathroom" id="bathroom" placeholder="Enter bathroom in house "
-                       class="form-control"
-                       formControlName="quantityBathroom">
+                <input class="form-control" formControlName="quantityBathroom" id="bathroom" name="bathroom"
+                       placeholder="Enter bathroom in house "
+                       type="number">
               </div>
             </div>
 
@@ -81,9 +87,9 @@
               <div class="col-md-4">
                 <label class="bedroom">Bedroom :</label></div>
               <div class="col-md-8">
-                <input type="number" name="bedroom" id="bedroom" placeholder="Enter bedroom in house "
-                       class="form-control"
-                       formControlName="quantityBedroom">
+                <input class="form-control" formControlName="quantityBedroom" id="bedroom" name="bedroom"
+                       placeholder="Enter bedroom in house "
+                       type="number">
               </div>
             </div>
 
@@ -92,8 +98,8 @@
               <div class="col-md-4">
                 <label class="description">Description :</label></div>
               <div class="col-md-8">
-              <textarea type="textarea" id="description" placeholder="Enter description " class="form-control"
-                        formControlName="description"></textarea>
+              <textarea class="form-control" formControlName="description" id="description" placeholder="Enter description "
+                        type="textarea"></textarea>
               </div>
             </div>
 
@@ -101,9 +107,9 @@
               <div class="col-md-4">
                 <label class="price">Price/night :</label></div>
               <div class="col-md-6">
-                <input type="text" name="price" id="price" placeholder="Enter price " step="0.01"
-                       class="form-control"
-                       formControlName="price">
+                <input class="form-control" formControlName="price" id="price" name="price" placeholder="Enter price "
+                       step="0.01"
+                       type="text">
               </div>
               <div class="col-md-2">
                 <p class="form-control form-control-sm">
@@ -144,7 +150,7 @@
             </div>
 
             <div class="action">
-              <button type="submit" class="btn btn-success">Update</button>
+              <button class="btn btn-success" type="submit">Update</button>
             </div>
           </form>
         </div>

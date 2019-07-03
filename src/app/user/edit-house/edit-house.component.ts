@@ -15,15 +15,17 @@ import {IImageToShow} from '../../model/image-to-show';
 export class EditHouseComponent implements OnInit {
 
   listImageToShow: IImageToShow[] = [];
+  immmmgg = [];
   formHouseData: FormGroup;
   editFail = false;
+  houseId: number;
   listCateGories: CategoriesHouse[];
   currentHouse = {
     categories: {name: ''}
   };
   listCurrentImageId = [];
   INDEXCHILDIMAGES = [1, 2, 3, 4];
-  private selecetdFile: [];
+  selecetdFile = [];
   delete1: any;
   delete2: any;
 
@@ -47,6 +49,7 @@ export class EditHouseComponent implements OnInit {
     });
     // this.getImageFromService();
     const id = +this.route.snapshot.paramMap.get('id');
+    this.houseId = id;
 
     this.houseService.getHouse(id).subscribe(next => {
       this.currentHouse = next;
@@ -128,6 +131,26 @@ export class EditHouseComponent implements OnInit {
       }, error => console.log('sssssssssss' + error));
     }
   }
+
+  onFileUpload(event, index: number, houseId: number) {
+    const fr = new FileReader();
+    fr.onload = () => {
+      if (this.listImageToShow[index] === undefined) {
+        this.listImageToShow[index] = {
+          id: null,
+          image: null
+        };
+        this.listImageToShow[index].image = fr.result;
+        console.log('aaaaa' + fr.result);
+      }
+    };
+    this.selecetdFile[index] = event.target.files[0];
+    fr.readAsDataURL(this.selecetdFile[index]);
+    const fd = new FormData();
+    fd.append('file', this.selecetdFile[index], this.selecetdFile[index].name);
+    this.imageService.create(houseId, fd).subscribe(next => console.log('ok'),
+          err => console.log(err));
+      }
 }
 
 
