@@ -16,6 +16,7 @@ import { CreateListCategoriesHouseComponent } from './admin/create-list-categori
 import { EditHouseComponent } from './user/edit-house/edit-house.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
+import { HouseDetailComponent } from './home/house-detail/house-detail.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     HouseManagementComponent,
     CreateListCategoriesHouseComponent,
     EditHouseComponent,
+    HouseDetailComponent,
   ],
   imports: [
     HttpClientModule,

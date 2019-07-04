@@ -7,11 +7,16 @@ import {RegisterComponent} from './register/register.component';
 import {UserComponent} from './user/user.component';
 import {HouseManagementComponent} from './user/house-management/house-management.component';
 import {EditHouseComponent} from './user/edit-house/edit-house.component';
+import {HouseDetailComponent} from './home/house-detail/house-detail.component';
 
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'houses/:id',
+    component: HouseDetailComponent
   },
   {
     path: 'admin',
