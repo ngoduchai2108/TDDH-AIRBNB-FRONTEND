@@ -32,6 +32,6 @@ export class HouseService {
   }
 
   getHouse(id: number) {
-    return this.http.get<any>(this.API_URL + 'house/'+ id);
+    return this.http.get<any>(this.API_URL + 'house/' + id);
   }
 }
