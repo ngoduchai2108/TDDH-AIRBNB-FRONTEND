@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from '../common/token/token-storage.service';
+import {HouseService} from '../service/house-service.service';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,10 @@ import {TokenStorageService} from '../common/token/token-storage.service';
 })
 export class HomeComponent implements OnInit {
   info: any;
+  listhouse: any;
 
-  constructor(private tokenStorageService: TokenStorageService) {
+  constructor(private tokenStorageService: TokenStorageService,
+              private houseService: HouseService) {
   }
 
   ngOnInit() {
@@ -18,8 +21,13 @@ export class HomeComponent implements OnInit {
       email: this.tokenStorageService.getEmail(),
       author: this.tokenStorageService.getAuthor()
     };
+    this.updateListHouse();
   }
 
+  updateListHouse() {
+    this.houseService.getHouses()
+      .subscribe(next => this.listhouse = next, err => console.log(err));
+  }
 
   logout() {
     this.tokenStorageService.logOut();
