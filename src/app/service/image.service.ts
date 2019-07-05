@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ImageService {
-  private readonly API_URL = 'http://localhost:8080/api/auth';
+  private readonly API_URL = 'http://192.168.2.158:8080/api/auth';
 
   constructor(private http: HttpClient) {
   }
@@ -15,9 +15,15 @@ export class ImageService {
   //   // @ts-ignore
   //   return this.http.get<any>(this.API_URL + 'houses');
   // }
+
+  getFirstImage(id: number): Observable<any> {
+    // @ts-ignore
+    return this.http.get<any>(this.API_URL + '/download-first/' + id, {responseType: 'blob'});
+  }
+
   getImage(id: number): Observable<any> {
     // @ts-ignore
-    return this.http.get<any>(this.API_URL + '/download-file/' + id,{responseType: "blob"});
+    return this.http.get<any>(this.API_URL + '/download-file/' + id, {responseType: 'blob'});
   }
 
   remove(id: number): Observable<any> {
@@ -38,7 +44,7 @@ export class ImageService {
   }
 
   getListIdByHouseId(id: number) {
-    return this.http.get<any>(this.API_URL + '/download-all-file/'+id);
+    return this.http.get<any>(this.API_URL + '/download-all-file/' + id);
   }
 }
 

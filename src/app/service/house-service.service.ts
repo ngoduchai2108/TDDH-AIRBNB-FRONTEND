@@ -10,6 +10,9 @@ export class HouseService {
 
   constructor(private http: HttpClient) {
   }
+  getHousesStatus(): Observable<any> {
+    return this.http.get<any>(this.API_URL + 'houses/status/false');
+  }
 
   getHouses(): Observable<any> {
     // @ts-ignore
