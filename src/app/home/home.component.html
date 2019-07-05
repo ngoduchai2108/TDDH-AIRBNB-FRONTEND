@@ -126,7 +126,7 @@
         <p>{{ house.quantityBathroom}}
           Bathroom / {{ house.quantityBedroom}} Bedroom </p>
         <p>${{house.price}}/night</p>
-        <a href="#">Show Detail</a>
+        <a [routerLink]="['/houses/',house.id]">Show Detail</a>
       </div>
       <div class="product" *ngIf="listImageToShowOfHouse[i] !== undefined">
         <img [src]="listImageToShowOfHouse[i].image" width="100%">
@@ -135,7 +135,7 @@
         <p>{{ house.quantityBathroom}}
           Bathroom / {{ house.quantityBedroom}} Bedroom </p>
         <p>${{house.price}}/night</p>
-        <a href="#">Show Detail</a>
+        <a [routerLink]="['/houses/',house.id]">Show Detail</a>
       </div>
     </div>
   </div>
