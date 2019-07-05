@@ -58,15 +58,30 @@
 
 <div id="title-product" class="container">
   <span> Recommended for you</span>
-    <div class="row" >
-      <div class="col-md-3 col-sm-6 " *ngFor="let house of listhouse" >
-        <div class="product" >
-          <img src="https://a0.muscache.com/im/pictures/998b4270-25d7-4850-8ccf-4350b9a5ab05.jpg?aki_policy=large"/>
-          <br/><span >{{house.name}}</span><br/> <span class="price">{{house.price}}</span>
-        </div>
+  <div class="row" >
+    <div class="col-md-3 col-sm-6 " *ngFor="let house of listhouse ; index as i" >
+      <div class="product" *ngIf="listImageToShowOfHouse[i] === undefined" >
+        <img src="../../assets/airbnb-defual.jpg" height="1667" width="2500"/>
+        <p class="price">Name House: {{house.name}}</p>
+        <p class="price">Address: {{house.address}}</p>
+        <p class="price">Bathroom: {{ house.quantityBathroom}}</p>
+        <p class="price">Bedroom: {{ house.quantityBedroom}}</p>
+        <p class="price">Price: {{house.price}}</p>
+        <a href="#">Show Detail</a>
+      </div>
+      <div class="product" *ngIf="listImageToShowOfHouse[i] !== undefined"  >
+        <img [src]="listImageToShowOfHouse[i].image" width="100%">
+        <p class="price">Name House: {{house.name}}</p>
+        <p class="price">Address: {{house.address}}</p>
+        <p class="price">Bathroom: {{ house.quantityBathroom}}</p>
+        <p class="price">Bedroom: {{ house.quantityBedroom}}</p>
+        <p class="price">Price: {{house.price}}</p>
+        <a href="#">Show Detail</a>
       </div>
     </div>
+  </div>
 </div>
+
 <!-- Ket thuc san pham -->
 <div id="footer" class="container-fluid">
   <div class="row">
