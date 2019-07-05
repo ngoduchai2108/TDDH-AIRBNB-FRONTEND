@@ -47,7 +47,8 @@
     <div class="col-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-duration="2s">
 
       <div class="image-content">
-        <img src="https://a0.muscache.com/im/pictures/4e8700d7-49f3-4165-b685-0c59524a1186.jpg?aki_policy=x_large"/><br/>
+        <img
+          src="https://a0.muscache.com/im/pictures/9a870331-d950-4625-bebf-f014894bb013.jpg?aki_policy=x_large"/><br/>
         <span class="font-content">Concerts</span><br/>
         <span>Feel the rhythm with intimate shows in unique spaces and listen to live music like never before</span>
       </div>
@@ -55,6 +56,62 @@
   </div>
 </div>
 <!-- Ket thuc gioi thieu ve trang web -->
+
+<br>
+
+<div class="container">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" >
+    <div class="row" id="search">
+      <div class="form-group col-sm-8">
+        <input formControlName="address" class="form-control" type="text" placeholder="Search address"/>
+      </div>
+      <div class="form-group col-sm-2">
+        <button type="submit" class="btn btn-block btn-primary">Search</button>
+      </div>
+      <div class="form-group col-sm-2">
+      <button type="reset" (click)="resetForm()" class="btn btn-block btn-danger">Reset</button>
+      </div>
+    </div>
+    <div class="row" id="filter">
+      <div class="form-group col-sm-3 col-xs-6">
+        <label>Bathroom</label>
+        <select data-filter="make" class="filter-make filter form-control" formControlName="quantityBathroom">
+          <option value="">All</option>
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+        </select>
+      </div>
+      <div class="form-group col-sm-3 col-xs-6">
+        <label>Bedroom</label>
+        <select data-filter="model" class="filter-model filter form-control " formControlName="quantityBedroom">
+          <option value="">All</option>
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+        </select>
+      </div>
+      <div class="form-group col-sm-3 col-xs-6">
+        <label>Min price</label>
+        <select data-filter="type" class="filter-type filter form-control" formControlName="minPrice">
+          <option value="">All</option>
+          <option value=99>100</option>
+        </select>
+      </div>
+      <div class="form-group col-sm-3 col-xs-6">
+        <label>Max price</label>
+        <select data-filter="price" class="filter-price filter form-control" formControlName="maxPrice">
+          <option value="">All</option>
+          <option value=199>200</option>
+        </select>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Ket thuc tim kiem -->
 
 <div id="title-product" class="container">
   <span> Recommended for you</span>

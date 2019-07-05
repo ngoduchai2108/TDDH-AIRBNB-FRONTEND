@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {ISearch} from '../model/Search';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,11 @@ export class HouseService {
 
   constructor(private http: HttpClient) {
   }
+
+  getSearch(search: ISearch): Observable<ISearch> {
+    return this.http.post<ISearch>(this.API_URL + 'houses/search', search );
+  }
+
   getHousesStatus(): Observable<any> {
     return this.http.get<any>(this.API_URL + 'houses/status/false');
   }
