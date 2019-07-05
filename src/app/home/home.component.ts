@@ -3,6 +3,7 @@ import {TokenStorageService} from '../common/token/token-storage.service';
 import {HouseService} from '../service/house-service.service';
 import {IHouse} from '../model/House';
 import {ImageService} from '../service/image.service';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -18,10 +19,12 @@ export class HomeComponent implements OnInit {
   isImage = false;
   private listImageToShowOfHouse = [];
   private idImage: number;
+  searchForm: FormGroup;
 
   constructor(private tokenStorageService: TokenStorageService,
               private houseService: HouseService,
-              private  imageService: ImageService) {
+              private  imageService: ImageService,
+              private fb: FormBuilder) {
   }
 
   ngOnInit() {
@@ -31,6 +34,13 @@ export class HomeComponent implements OnInit {
       author: this.tokenStorageService.getAuthor()
     };
     this.updateListHouse();
+    this.searchForm = this.fb.group({
+      address: [null],
+      quantityBathroom: [null],
+      quantityBedroom: [null],
+      minPrice: [null],
+      maxPrice: [null]
+    });
   }
 
   updateListHouse() {
@@ -74,5 +84,17 @@ export class HomeComponent implements OnInit {
   logout() {
     this.tokenStorageService.logOut();
     window.location.reload();
+  }
+
+  onSubmit() {
+    const {value} = this.searchForm;
+    console.log(value);
+    // @ts-ignore
+    this.houseService.getSearch(value).subscribe(data => this.listhouse = data, error => this.listhouse = []);
+  }
+
+  resetForm() {
+    this.searchForm.reset();
+    this.updateListHouse();
   }
 }
