@@ -110,13 +110,15 @@ body a {
   /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
 }
 
-.price {
-  font-size: 14px;
-  color: red;
-  margin-bottom: 16px;
-  padding-bottom: 16px;
+.product p {
+  font-size: 17px;
+  font-family: 'Century Schoolbook L';
+  text-align: left;
+  margin: 0;
 }
-
+.product h6 {
+  text-align: left;
+}
 #footer {
   margin-top: 42px;
   color: white;
@@ -154,21 +156,21 @@ body a {
 }
 
 /* man hinh theo che do dien thoai quay doc*/
-@media ( max-width: 575.98px) {
+@media (max-width: 575.98px) {
   .navbar-center {
     margin-left: 0% !important;
   }
 }
 
 /* man hinh theo che do dien thoai quay ngang*/
-@media ( min-width: 576px) and (max-width: 767.98px) {
+@media (min-width: 576px) and (max-width: 767.98px) {
   .navbar-center {
     margin-left: 0% !important;
   }
 }
 
 /* man hinh theo che do ipad */
-@media ( min-width: 768px) and (max-width: 991.98px) {
+@media (min-width: 768px) and (max-width: 991.98px) {
   .navbar-center {
     margin-left: 8% !important;
   }

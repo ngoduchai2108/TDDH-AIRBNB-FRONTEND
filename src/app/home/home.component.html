@@ -30,7 +30,8 @@
     <div class="col-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-duration="2s">
 
       <div class="image-content">
-        <img src="https://a0.muscache.com/im/pictures/52aa45c1-d168-41d5-9149-445c8787358f.jpg?aki_policy=x_large"/><br/>
+        <img
+          src="https://a0.muscache.com/im/pictures/52aa45c1-d168-41d5-9149-445c8787358f.jpg?aki_policy=x_large"/><br/>
         <span class="font-content">Cooking classes</span><br/>
         <span>Sample local flavors and take home new skill with hand-on cooking classes by local expect</span>
       </div>
@@ -38,7 +39,8 @@
     <div class="col-12 col-sm-6 col-md-4 wow fadeInUp" data-wow-duration="2s">
 
       <div class="image-content">
-        <img src="https://a0.muscache.com/im/pictures/bbaee069-8069-459d-aebd-f527b9ed72e8.jpg?aki_policy=x_large"/><br/>
+        <img
+          src="https://a0.muscache.com/im/pictures/bbaee069-8069-459d-aebd-f527b9ed72e8.jpg?aki_policy=x_large"/><br/>
         <span class="font-content">Surting</span><br/>
         <span>Catch a ware with experiences hand-picked by the Word Surf League and hosted by a pro</span>
       </div>
@@ -60,7 +62,7 @@
 <br>
 
 <div class="container">
-  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" >
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
     <div class="row" id="search">
       <div class="form-group col-sm-8">
         <input formControlName="address" class="form-control" type="text" placeholder="Search address"/>
@@ -69,7 +71,7 @@
         <button type="submit" class="btn btn-block btn-primary">Search</button>
       </div>
       <div class="form-group col-sm-2">
-      <button type="reset" (click)="resetForm()" class="btn btn-block btn-danger">Reset</button>
+        <button type="reset" (click)="resetForm()" class="btn btn-block btn-danger">Reset</button>
       </div>
     </div>
     <div class="row" id="filter">
@@ -115,24 +117,24 @@
 
 <div id="title-product" class="container">
   <span> Recommended for you</span>
-  <div class="row" >
-    <div class="col-md-3 col-sm-6 " *ngFor="let house of listhouse ; index as i" >
-      <div class="product" *ngIf="listImageToShowOfHouse[i] === undefined" >
+  <div class="row">
+    <div class="col-md-3 col-sm-6 " *ngFor="let house of listhouse ; index as i">
+      <div class="product" *ngIf="listImageToShowOfHouse[i] === undefined">
         <img src="../../assets/airbnb-defual.jpg" height="1667" width="2500"/>
-        <p class="price">Name House: {{house.name}}</p>
-        <p class="price">Address: {{house.address}}</p>
-        <p class="price">Bathroom: {{ house.quantityBathroom}}</p>
-        <p class="price">Bedroom: {{ house.quantityBedroom}}</p>
-        <p class="price">Price: {{house.price}}</p>
+        <p>{{house.address}} </p>
+        <h6><b>{{house.name}}</b></h6>
+        <p>{{ house.quantityBathroom}}
+          Bathroom / {{ house.quantityBedroom}} Bedroom </p>
+        <p>${{house.price}}/night</p>
         <a href="#">Show Detail</a>
       </div>
-      <div class="product" *ngIf="listImageToShowOfHouse[i] !== undefined"  >
+      <div class="product" *ngIf="listImageToShowOfHouse[i] !== undefined">
         <img [src]="listImageToShowOfHouse[i].image" width="100%">
-        <p class="price">Name House: {{house.name}}</p>
-        <p class="price">Address: {{house.address}}</p>
-        <p class="price">Bathroom: {{ house.quantityBathroom}}</p>
-        <p class="price">Bedroom: {{ house.quantityBedroom}}</p>
-        <p class="price">Price: {{house.price}}</p>
+        <p>{{house.address}} </p>
+        <h6><b>{{house.name}}</b></h6>
+        <p>{{ house.quantityBathroom}}
+          Bathroom / {{ house.quantityBedroom}} Bedroom </p>
+        <p>${{house.price}}/night</p>
         <a href="#">Show Detail</a>
       </div>
     </div>
