@@ -52,29 +52,52 @@
     </div>
 
     <div class=" col-md-5 col-sm-5">
-
-      <div class="row">
-<!--        <form [formGroup]="formBooking">-->
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Check in</label>
-            <input type="date" class="form-control" formControlName="startDate">
+      <form [formGroup]="formBooking" (ngSubmit)="onBooking()">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Check in</label>
+              <input type="date" (change)="getTotal()" class="form-control" formControlName="startDate">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Check out</label>
+              <input type="date" (change)="getTotal()" class="form-control" formControlName="endDate">
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Check out</label>
-            <input type="date" class="form-control" formControlName="endDate">
-          </div>
+        <div *ngIf="validateFormBooking()" class="book">
+          Total: ${{total}}
         </div>
-<!--        </form>-->
+        <div *ngIf="invalidMessage" class="alert alert-danger" >
+          {{invalidMessage}}
+        </div>
+        <div *ngIf="!validateFormBooking()&&(this.formBooking.get('endDate').touched)&&(validCheckIn())"
+             class="alert alert-danger">
+          EndDate must after StartDate
+        </div>
+        <div *ngIf="(!validCheckIn())&&(this.formBooking.get('startDate').touched)"
+             class="alert alert-danger">
+          StartDate must be: (StartDate > now ) && (StartDate -now < 10 days);
+        </div>
+        <div *ngIf="authority&&!booked&&!house.rented">
+          <button type="submit" class="btn btn-danger book">Book</button>
+        </div>
+      </form>
+      <div *ngIf="booked" class="alert alert-success">
+        You are booked this house successfully
+      </div>
+      <div *ngIf="house.rented" class="alert alert-danger">
+        Sorry the house is rented
+      </div>
+      <div *ngIf="errorMessage">
+        {{errorMessage}}
       </div>
       <div *ngIf="!authority">
-        <a [routerLink]="['/login']" class="btn btn-primary book" > Login to Book</a>
+        <a [routerLink]="['/login']" class="btn btn-primary book"> Login to Book</a>
       </div>
-      <div *ngIf="authority">
-        <button type="button" class="btn btn-danger book">Book</button>
-      </div>
+
     </div>
   </div>
 
