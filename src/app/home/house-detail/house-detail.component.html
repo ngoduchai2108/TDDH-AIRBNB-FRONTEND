@@ -54,23 +54,27 @@
     <div class=" col-md-5 col-sm-5">
 
       <div class="row">
-
+<!--        <form [formGroup]="formBooking">-->
         <div class="col-md-6">
           <div class="form-group">
             <label>Check in</label>
-            <input type="date" class="form-control">
+            <input type="date" class="form-control" formControlName="startDate">
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label>Check out</label>
-            <input type="date" class="form-control">
+            <input type="date" class="form-control" formControlName="endDate">
           </div>
         </div>
-
+<!--        </form>-->
       </div>
-
-      <button id="book" type="button" class="btn btn-danger">Book</button>
+      <div *ngIf="!authority">
+        <a [routerLink]="['/login']" class="btn btn-primary book" > Login to Book</a>
+      </div>
+      <div *ngIf="authority">
+        <button type="button" class="btn btn-danger book">Book</button>
+      </div>
     </div>
   </div>
 

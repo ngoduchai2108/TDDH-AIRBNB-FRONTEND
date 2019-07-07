@@ -7,6 +7,7 @@ import {HouseService} from '../../service/house-service.service';
 import {CategorieshouseService} from '../../service/categorieshouse.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {IHouse} from '../../model/House';
+import {TokenStorageService} from '../../common/token/token-storage.service';
 
 @Component({
   selector: 'app-house-detail',
@@ -16,12 +17,14 @@ import {IHouse} from '../../model/House';
 export class HouseDetailComponent implements OnInit {
 
   listImageToShow: IImageToShow[] = [];
-  formHouseData: FormGroup;
+  formBooking: FormGroup;
   houseId: number;
   listCurrentImageId = [];
   private house: IHouse;
+  authority = false;
 
-  constructor(private  imageService: ImageService,
+  constructor(private tokenStorage: TokenStorageService,
+              private imageService: ImageService,
               private houseService: HouseService,
               private cateService: CategorieshouseService,
               private route: ActivatedRoute,
@@ -29,7 +32,7 @@ export class HouseDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formHouseData = this.fb.group({
+    this.formBooking = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       categories: ['', [Validators.required]],
       address: ['', [Validators.required, Validators.minLength(3)]],
@@ -38,6 +41,10 @@ export class HouseDetailComponent implements OnInit {
       description: ['', [Validators.required, Validators.minLength(10)]],
       price: ['', [Validators.required, Validators.min(0)]],
     });
+
+    if (this.tokenStorage.getToken()) {
+      this.authority = true;
+    }
 
     const id = +this.route.snapshot.paramMap.get('id');
     this.houseId = id;
