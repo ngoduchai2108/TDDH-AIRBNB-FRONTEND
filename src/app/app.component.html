@@ -18,8 +18,11 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!authority">
           <a routerLink="login/" class="nav-link">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="authority">
+          <a (click)="logOut()" class="btn btn-link">Logout</a>
         </li>
         <li class="nav-item">
           <a routerLink="signup" class="nav-link">Register</a>

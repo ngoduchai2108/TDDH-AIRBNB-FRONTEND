@@ -30,4 +30,9 @@ export class AppComponent implements OnInit {
       });
     }
   }
+
+  logOut() {
+    this.tokenStorage.logOut();
+    window.location.href = 'http://localhost:4200/login';
+  }
 }

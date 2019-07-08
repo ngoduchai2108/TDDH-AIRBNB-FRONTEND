@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLogInFailed = false;
   roles: string[] = [];
+  authority = false;
 
   constructor(
     private authService: AuthService,
@@ -29,6 +30,10 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
+
+    if (this.tokenStorageService.getToken()) {
+      this.authority = true;
+    }
   }
 
   onSubmit() {
@@ -43,10 +48,16 @@ export class LoginComponent implements OnInit {
         this.tokenStorageService.saveAuthor(next.authorities);
         this.isLoggedIn = true;
         this.roles = this.tokenStorageService.getAuthor();
-        this.router.navigate(['/home']);
+        // @ts-ignore
+        window.location.href = 'http://localhost:4200/home';
       }, error => {
         this.isLogInFailed = true;
       });
     } else {this.isLogInFailed = true; }
+  }
+
+  logOut() {
+    this.tokenStorageService.logOut();
+    this.authority = false;
   }
 }

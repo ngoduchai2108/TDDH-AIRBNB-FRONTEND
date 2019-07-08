@@ -1,5 +1,5 @@
 <div class="background">
-  <div class="loginForm container">
+  <div class="loginForm container" *ngIf="!authority">
     <!---heading---->
     <header class="heading"> Sign In</header>
     <hr>
@@ -62,4 +62,11 @@
       </div>
     </form>
   </div>
+  <div *ngIf="authority" class="container">
+    <div class="loggedin offset-md-3 col-md-6">
+      <p class="text-center"> You are Logged in <a [routerLink]="['/home']"> Go to Home Page</a> </p>
+      <button class="btn btn-danger" (click)="logOut()">Logout</button>
+    </div>
+  </div>
 </div>
+
