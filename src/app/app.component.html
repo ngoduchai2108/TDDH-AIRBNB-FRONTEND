@@ -1,36 +1,37 @@
 <div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="home" src=""><img src="../assets/logo_airbnb_icon.png" height="40px" width="30px"/></a>
+    <a class="navbar-brand" href="home" src=""><img src="../assets/logo_airbnb_icon.png" height="40px"
+                                                    width="30px"/></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto navbar-center">
+      <ul class="navbar-nav mr-auto navbar-center" *ngIf="authority">
         <li class="nav-item active">
           <a class="nav-link" routerLink="home">Host a home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" >
           <a class="nav-link" routerLink="houses">Create House</a>
         </li>
+        <li class="nav-item">
+          <a (click)="logOut()" class="btn btn-link">Logout</a>
+        </li>
+        <li class="nav-item" *ngIf="authority">
+          <a routerLink="booking" class="nav-link">
+            <img src="assets/icon_cart.png">
+          </a></li>
         <li class="collapse navbar-collapse" id="navbarSupportedContent-4">
       </ul>
 
-      <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item" *ngIf="!authority">
+      <ul class="nav navbar-nav navbar-right" *ngIf="!authority">
+        <li class="nav-item" >
           <a routerLink="login/" class="nav-link">Login</a>
-        </li>
-        <li class="nav-item" *ngIf="authority">
-          <a (click)="logOut()" class="btn btn-link">Logout</a>
         </li>
         <li class="nav-item">
           <a routerLink="signup" class="nav-link">Register</a>
         </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <img src="assets/icon_cart.png">
-          </a></li>
       </ul>
     </div>
   </nav>

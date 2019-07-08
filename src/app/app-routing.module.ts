@@ -8,11 +8,16 @@ import {UserComponent} from './user/user.component';
 import {HouseManagementComponent} from './user/house-management/house-management.component';
 import {EditHouseComponent} from './user/edit-house/edit-house.component';
 import {HouseDetailComponent} from './home/house-detail/house-detail.component';
+import {ListBookingComponent} from './home/list-booking/list-booking.component';
 
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'booking',
+    component: ListBookingComponent
   },
   {
     path: 'houses/:id',

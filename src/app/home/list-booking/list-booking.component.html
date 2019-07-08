@@ -1,0 +1,48 @@
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>eCommerce Product Detail</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
+</head>
+<br>
+<h2>List Booking</h2>
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Price</th>
+      <th scope="col">StartDate</th>
+      <th scope="col">EndDate</th>
+      <th scope="col">Total</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody *ngIf="listbooking !== null">
+    <tr *ngFor="let book of listbooking; index as i">
+      <td>{{i + 1}}</td>
+      <td>{{book.house.name}}</td>
+      <td>{{book.house.address}}</td>
+      <td>{{book.house.price}}</td>
+      <td>{{book.startDate}}</td>
+      <td>{{book.endDate}}</td>
+      <td>{{getTotal(book.startDate, book.endDate, book.house.price)}}</td>
+      <a (click)="onDelete(book.id)" class="table-link danger">
+									<span class="fa-stack delete">
+										<i class="fa fa-square fa-stack-2x"></i>
+										<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+									</span>
+      </a>
+    </tr>
+    </tbody>
+  </table>
+  <td *ngIf="listbooking" ><b>All total: {{getTotalAllBooking()}}</b></td>
+  <p class="alert alert-danger" *ngIf="msg">
+    You can not delete booking after 24H
+  </p>
+</div>
