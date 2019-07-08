@@ -83,6 +83,12 @@
           <option value=2>2</option>
           <option value=3>3</option>
           <option value=4>4</option>
+          <option value=5>5</option>
+          <option value=6>6</option>
+          <option value=7>7</option>
+          <option value=8>8</option>
+          <option value=9>9</option>
+          <option value=10>10</option>
         </select>
       </div>
       <div class="form-group col-sm-3 col-xs-6">
@@ -93,6 +99,12 @@
           <option value=2>2</option>
           <option value=3>3</option>
           <option value=4>4</option>
+          <option value=5>5</option>
+          <option value=6>6</option>
+          <option value=7>7</option>
+          <option value=8>8</option>
+          <option value=9>9</option>
+          <option value=10>10</option>
         </select>
       </div>
       <div class="form-group col-sm-3 col-xs-6">
@@ -100,6 +112,15 @@
         <select data-filter="type" class="filter-type filter form-control" formControlName="minPrice">
           <option value="">All</option>
           <option value=99>100</option>
+          <option value=199>200</option>
+          <option value=299>300</option>
+          <option value=399>400</option>
+          <option value=499>500</option>
+          <option value=599>600</option>
+          <option value=699>700</option>
+          <option value=799>800</option>
+          <option value=899>900</option>
+          <option value=999>1000</option>
         </select>
       </div>
       <div class="form-group col-sm-3 col-xs-6">
@@ -107,10 +128,21 @@
         <select data-filter="price" class="filter-price filter form-control" formControlName="maxPrice">
           <option value="">All</option>
           <option value=199>200</option>
+          <option value=299>300</option>
+          <option value=399>400</option>
+          <option value=499>500</option>
+          <option value=599>600</option>
+          <option value=699>700</option>
+          <option value=799>800</option>
+          <option value=899>900</option>
+          <option value=999>1000</option>
         </select>
       </div>
     </div>
   </form>
+  <div class="alert alert-danger" *ngIf="isPrice === false">
+    <strong>Danger! </strong> minPrice must be smaller than maxPrice !!!
+  </div>
 </div>
 
 <!-- Ket thuc tim kiem -->
@@ -118,7 +150,7 @@
 <div id="title-product" class="container">
   <span> Recommended for you</span>
   <div class="row">
-    <div class="col-md-3 col-sm-6 " *ngFor="let house of listhouse ; index as i">
+    <div class="col-md-3 col-sm-6 " *ngFor="let house of listhouse | filter: filter | paginate: { itemsPerPage: 12, currentPage: p}; index as i">
       <div class="product" *ngIf="listImageToShowOfHouse[i] === undefined">
         <img src="../../assets/airbnb-defual.jpg" height="1667" width="2500"/>
         <p>{{house.address}} </p>
@@ -139,6 +171,9 @@
       </div>
     </div>
   </div>
+  <ul class="pagination pagination-xs justify-content-end">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </ul>
 </div>
 
 <!-- Ket thuc san pham -->

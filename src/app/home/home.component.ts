@@ -17,9 +17,12 @@ export class HomeComponent implements OnInit {
   ;
   // private listImageToShow = [];
   isImage = false;
+  searchForm: FormGroup;
+  filter: any;
+  p: any;
   private listImageToShowOfHouse = [];
   private idImage: number;
-  searchForm: FormGroup;
+  private isPrice: boolean;
 
   constructor(private tokenStorageService: TokenStorageService,
               private houseService: HouseService,
@@ -88,7 +91,9 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     const {value} = this.searchForm;
-    console.log(value);
+    console.log(value.minPrice);
+    console.log(Number(value.maxPrice));
+    this.isPrice = !(value.minPrice !== null && value.maxPrice !== null && Number(value.minPrice) > Number(value.maxPrice));
     // @ts-ignore
     this.houseService.getSearch(value).subscribe(data => this.listhouse = data, error => this.listhouse = []);
   }
