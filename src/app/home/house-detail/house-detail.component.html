@@ -82,7 +82,7 @@
           StartDate must be: (StartDate > now ) && (StartDate -now < 10 days);
         </div>
         <div *ngIf="authority&&!booked&&!house.rented">
-          <button type="submit" class="btn btn-danger book">Book</button>
+          <button type="submit" class="btn btn-danger book">Booking</button>
         </div>
       </form>
       <div *ngIf="booked" class="alert alert-success">

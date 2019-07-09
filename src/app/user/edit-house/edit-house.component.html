@@ -1,155 +1,162 @@
-<div class="container">
-  <div class="card">
-    <div>
-      <div class="wrapper row">
-        <div class="col-md-6">
-          <div class="preview-pic tab-content">
-            <div class="form-group files">
-              <input #selectFile1 (change)="onFileUpload($event,0,houseId)" id="1" style="display: none" type="file">
-              <button (click)="selectFile1.click()" *ngIf="listImageToShow[0] === undefined">Select File</button>
-              <div *ngIf="listImageToShow[0] !== undefined" class="image-preview">
-                <div class="box1">
-                  <img [src]="listImageToShow[0].image" width="100%">
-                  <h3 class="title">Williamson</h3>
-                  <ul class="icon">
-                    <li><a (click)="deleteImage(listImageToShow[0].id,0)"><i class="fa fa-close"></i></a></li>
+<div class="bodyHome">
+  <div class="container">
+    <div class="card">
+      <div>
+        <div class="wrapper row">
+          <div class="col-md-6">
+            <div class="preview-pic tab-content">
+              <div class="form-group files">
+                <input #selectFile1 (change)="onFileUpload($event,0,houseId)" id="1" style="display: none" type="file">
+                <button (click)="selectFile1.click()" *ngIf="listImageToShow[0] === undefined">Select File</button>
+                <div *ngIf="listImageToShow[0] !== undefined" class="image-preview">
+                  <div class="box1">
+                    <img [src]="listImageToShow[0].image" width="100%">
+                    <h3 class="title">Airbnb</h3>
+                    <ul class="icon">
+                      <li><a (click)="deleteImage(listImageToShow[0].id,0)"><i class="fa fa-close"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <ul class="preview-thumbnail nav nav-tabs">
+                    <li *ngFor="let indexOfChildImage of INDEXCHILDIMAGES" class="col-md-3">
+                      <a data-target="#pic-1" data-toggle="tab">
+                        <div class="form-group files">
+                          <input #selectFile2 (change)="onFileUpload($event,indexOfChildImage,houseId)" id="2"
+                                 style="display: none"
+                                 type="file">
+                          <button (click)="selectFile2.click()"
+                                  *ngIf="listImageToShow[indexOfChildImage] === undefined">
+                            Select File
+                          </button>
+                          <div *ngIf="listImageToShow[indexOfChildImage] !== undefined " class="image-preview ">
+                            <div class="box1">
+                              <img [src]="listImageToShow[indexOfChildImage].image" height="50%" width="100%">
+                              <h3 class="title">Airbnb</h3>
+                              <ul class="icon">
+                                <li><a (click)="deleteImage(listImageToShow[indexOfChildImage].id,indexOfChildImage)"><i
+                                  class="fa fa-close"></i></a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </div>
-              <div class="row">
-                <ul class="preview-thumbnail nav nav-tabs">
-                  <li *ngFor="let indexOfChildImage of INDEXCHILDIMAGES" class="col-md-3">
-                    <a data-target="#pic-1" data-toggle="tab">
-                      <div class="form-group files">
-                        <input #selectFile2 (change)="onFileUpload($event,indexOfChildImage,houseId)" id="2"
-                               style="display: none"
-                               type="file" >
-                        <button (click)="selectFile2.click()" *ngIf="listImageToShow[indexOfChildImage] === undefined">
-                          Select File
-                        </button>
-                        <div *ngIf="listImageToShow[indexOfChildImage] !== undefined " class="image-preview ">
-                          <div class="box1">
-                            <img [src]="listImageToShow[indexOfChildImage].image" height="50%" width="100%">
-                            <h3 class="title">Williamson</h3>
-                            <ul class="icon">
-                              <li><a (click)="deleteImage(listImageToShow[indexOfChildImage].id,indexOfChildImage)"><i class="fa fa-close"></i></a></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
             </div>
           </div>
-        </div>
-        <div class="details col-md-6">
-          <h2 class="product-title">Edit House</h2>
-          <form (ngSubmit)="editHouse()" [formGroup]="formHouseData" class="font">
-            <div class="row">
-              <div class="col-md-4">
-                <label class="name">Name :</label></div>
-              <div class="col-md-8">
-                <input class="form-control" formControlName="name" id="name" name="name" placeholder="Enter name house"
-                       type="text">
+          <div class="details col-md-6">
+            <h2 class="product-title">Edit House</h2>
+            <form (ngSubmit)="editHouse()" [formGroup]="formHouseData" class="font">
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="name">Name :</label></div>
+                <div class="col-md-8">
+                  <input class="form-control" formControlName="name" id="name" name="name"
+                         placeholder="Enter name house"
+                         type="text">
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4">
-                <label class="categories home">Categories home :</label></div>
-              <div class="col-md-8">
-                <select class="form-control form-control-sm" formControlName="categories" id="categories" name="categories"
-                        style="width:100%;">
-                  <option *ngFor="let cate of listCateGories" [ngValue]="cate">{{cate.name}}</option>
-                  <option [ngValue]="currentHouse.categories" selected>{{currentHouse.categories.name}}</option>
-                </select>
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="categories home">Categories home :</label></div>
+                <div class="col-md-8">
+                  <select class="form-control form-control-sm" formControlName="categories" id="categories"
+                          name="categories"
+                          style="width:100%;">
+                    <option *ngFor="let cate of listCateGories" [ngValue]="cate">{{cate.name}}</option>
+                    <option [ngValue]="currentHouse.categories" selected>{{currentHouse.categories.name}}</option>
+                  </select>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4">
-                <label class="address">Address :</label></div>
-              <div class="col-md-8">
-                <input class="form-control" formControlName="address" id="address" name="address"
-                       placeholder="Enter address house "
-                       type="text">
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="address">Address :</label></div>
+                <div class="col-md-8">
+                  <input class="form-control" formControlName="address" id="address" name="address"
+                         placeholder="Enter address house "
+                         type="text">
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4">
-                <label class="bathroom">Bathroom :</label></div>
-              <div class="col-md-8">
-                <input class="form-control" formControlName="quantityBathroom" id="bathroom" name="bathroom"
-                       placeholder="Enter bathroom in house "
-                       type="number">
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="bathroom">Bathroom :</label></div>
+                <div class="col-md-8">
+                  <input class="form-control" formControlName="quantityBathroom" id="bathroom" name="bathroom"
+                         placeholder="Enter bathroom in house "
+                         type="number">
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4">
-                <label class="bedroom">Bedroom :</label></div>
-              <div class="col-md-8">
-                <input class="form-control" formControlName="quantityBedroom" id="bedroom" name="bedroom"
-                       placeholder="Enter bedroom in house "
-                       type="number">
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="bedroom">Bedroom :</label></div>
+                <div class="col-md-8">
+                  <input class="form-control" formControlName="quantityBedroom" id="bedroom" name="bedroom"
+                         placeholder="Enter bedroom in house "
+                         type="number">
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4">
-                <label class="description">Description :</label></div>
-              <div class="col-md-8">
-              <textarea class="form-control" formControlName="description" id="description" placeholder="Enter description "
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="description">Description :</label></div>
+                <div class="col-md-8">
+              <textarea class="form-control" formControlName="description" id="description"
+                        placeholder="Enter description "
                         type="textarea"></textarea>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4">
-                <label class="price">Price/night :</label></div>
-              <div class="col-md-6">
-                <input class="form-control" formControlName="price" id="price" name="price" placeholder="Enter price "
-                       step="0.01"
-                       type="text">
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="price">Price/night :</label></div>
+                <div class="col-md-6">
+                  <input class="form-control" formControlName="price" id="price" name="price" placeholder="Enter price "
+                         step="0.01"
+                         type="text">
+                </div>
+                <div class="col-md-2">
+                  <p class="form-control form-control-sm">
+                    USD
+                  </p>
+                </div>
               </div>
-              <div class="col-md-2">
-                <p class="form-control form-control-sm">
-                  USD
-                </p>
+              <div *ngIf="formHouseData.get('name').invalid&& formHouseData.get('name').touched"
+                   class="alert alert-danger">
+                Name is required and min length is 3
               </div>
-            </div>
-            <div *ngIf="formHouseData.get('name').invalid&& formHouseData.get('name').touched"
-                 class="alert alert-danger">
-              Name is required and min length is 3
-            </div>
-            <div *ngIf="formHouseData.get('categories').invalid&& formHouseData.get('categories').touched"
-                 class="alert alert-danger">
-              Categories is required
-            </div>
-            <div *ngIf="formHouseData.get('address').invalid&& formHouseData.get('address').touched"
-                 class="alert alert-danger">
-              Address is required and min length is 3
-            </div>
-            <div *ngIf="formHouseData.get('quantityBathroom').invalid&& formHouseData.get('quantityBathroom').touched"
-                 class="alert alert-danger">
-              QuantityBathroom is required and min is 1
-            </div>
-            <div *ngIf="formHouseData.get('quantityBedroom').invalid&& formHouseData.get('quantityBedroom').touched"
-                 class="alert alert-danger">
-              QuantityBedroom is required and min is 1
-            </div>
-            <div *ngIf="formHouseData.get('description').invalid&& formHouseData.get('description').touched"
-                 class="alert alert-danger">
-              Description is required and min length is 10
-            </div>
-            <div *ngIf="formHouseData.get('price').invalid&& formHouseData.get('price').touched"
-                 class="alert alert-danger">
-              Price is required and min is 0
-            </div>
-            <div *ngIf="editFail" class="alert alert-danger">
-              Edit Failed, Please reload page to try again.
-            </div>
-            <div class="action">
-              <button class="btn btn-success" type="submit">Update</button>
-            </div>
-          </form>
+              <div *ngIf="formHouseData.get('categories').invalid&& formHouseData.get('categories').touched"
+                   class="alert alert-danger">
+                Categories is required
+              </div>
+              <div *ngIf="formHouseData.get('address').invalid&& formHouseData.get('address').touched"
+                   class="alert alert-danger">
+                Address is required and min length is 3
+              </div>
+              <div *ngIf="formHouseData.get('quantityBathroom').invalid&& formHouseData.get('quantityBathroom').touched"
+                   class="alert alert-danger">
+                QuantityBathroom is required and min is 1
+              </div>
+              <div *ngIf="formHouseData.get('quantityBedroom').invalid&& formHouseData.get('quantityBedroom').touched"
+                   class="alert alert-danger">
+                QuantityBedroom is required and min is 1
+              </div>
+              <div *ngIf="formHouseData.get('description').invalid&& formHouseData.get('description').touched"
+                   class="alert alert-danger">
+                Description is required and min length is 10
+              </div>
+              <div *ngIf="formHouseData.get('price').invalid&& formHouseData.get('price').touched"
+                   class="alert alert-danger">
+                Price is required and min is 0
+              </div>
+              <div *ngIf="editFail" class="alert alert-danger">
+                Edit Failed, Please reload page to try again.
+              </div>
+              <div class="action">
+                <button class="btn btn-success" type="submit">Update</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
