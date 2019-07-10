@@ -12,13 +12,23 @@ export class BookingService {
   constructor(private http: HttpClient) {
   }
 
+  putCheckIn(id: number): Observable<any> {
+    // @ts-ignore
+    return this.http.put<any>(this.API_URL + '/' + id);
+  }
+
   getBookings(): Observable<IBooking[]> {
     return this.http.get<IBooking[]>(this.API_URL);
   }
   getBooking(id: number): Observable<IBooking> {
     return this.http.get<IBooking>(this.API_URL + '/' + id );
   }
-
+  getBookingByHouse(id: number): Observable<IBooking[]> {
+    return this.http.get<IBooking[]>(this.API_URL + '/by-houses/' + id );
+  }
+  getBookingByUser(): Observable<IBooking[]> {
+    return this.http.get<IBooking[]>(this.API_URL + '/history');
+  }
   cancelBooking(id: number): Observable<number> {
     return this.http.delete<number>(this.API_URL + '/' + id);
   }

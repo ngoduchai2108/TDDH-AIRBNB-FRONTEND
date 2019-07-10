@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>eCommerce Product Detail</title>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
 </head>
 <div class="bodyHome">
@@ -180,6 +180,7 @@
       <th scope="col">Bathroom</th>
       <th scope="col">Bedroom</th>
       <th scope="col">Price (USD)</th>
+      <th scope="col">Rented</th>
     </tr>
     </thead>
     <tbody *ngIf="listhouse !== null">
@@ -191,6 +192,14 @@
       <td>{{house.quantityBathroom}}</td>
       <td>{{house.quantityBedroom}}</td>
       <td>{{house.price}}</td>
+      <td>
+        <a *ngIf="house.rented">
+          <input type="checkbox" checked onclick="return false">
+        </a>
+        <a *ngIf="house.rented === false">
+          <input type="checkbox" onclick="return false">
+        </a>
+      </td>
       <td style="width: 20%;">
         <a class="table-link danger" [routerLink]="['/houses/edit',house.id]">
 									<span class="fa-stack edit">
@@ -204,7 +213,14 @@
 										<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
 									</span>
         </a>
+        <a class="table-link danger" [routerLink]="['/houses/view',house.id]">
+									<span class="fa-stack view">
+										<i class="fa fa-square fa-stack-2x"></i>
+										<i class="fa fa-eye fa-stack-1x fa-inverse"></i>
+									</span>
+        </a>
       </td>
+
     </tr>
     </tbody>
   </table>

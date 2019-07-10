@@ -107,6 +107,7 @@
                         type="textarea"></textarea>
                 </div>
               </div>
+
               <div class="row">
                 <div class="col-md-4">
                   <label class="price">Price/night :</label></div>
@@ -121,6 +122,20 @@
                   </p>
                 </div>
               </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="status">Status :</label></div>
+                <div class="col-md-8">
+                  <select class="form-control form-control-sm" formControlName="rented" id="rented"
+                          name="rented"
+                          style="width:100%;">
+                    <option [ngValue]="true">rent</option>
+                    <option [ngValue]="false">unrent</option>
+                  </select>
+                </div>
+              </div>
+
               <div *ngIf="formHouseData.get('name').invalid&& formHouseData.get('name').touched"
                    class="alert alert-danger">
                 Name is required and min length is 3

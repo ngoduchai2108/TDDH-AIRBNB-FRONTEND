@@ -45,6 +45,7 @@ export class EditHouseComponent implements OnInit {
       quantityBedroom: ['', [Validators.required, Validators.min(1)]],
       description: ['', [Validators.required, Validators.minLength(10)]],
       price: ['', [Validators.required, Validators.min(0)]],
+      rented:  [''],
     });
     // this.getImageFromService();
     const id = +this.route.snapshot.paramMap.get('id');

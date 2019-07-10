@@ -1,0 +1,83 @@
+<br>
+<div class="row">
+  <div class="col-md-6 col-sm-6 aa" id="content" *ngIf="listImageToShow[0] !== undefined">
+    <img [src]="listImageToShow[0].image" width="100%" height="500px">
+  </div>
+
+  <div class=" col-md-6 col-sm-6 row">
+    <div class="col-md-6 aa" *ngIf="listImageToShow[1] !== undefined">
+      <img [src]="listImageToShow[1].image" width="100%" height="250px">
+    </div>
+    <div class="col-md-6 aa" *ngIf="listImageToShow[2] !== undefined">
+      <img [src]="listImageToShow[2].image" width="100%" height="250px">
+    </div>
+    <div class="col-md-6 aa" *ngIf="listImageToShow[3] !== undefined">
+      <img [src]="listImageToShow[3].image" width="100%" height="250px">
+    </div>
+    <div class="col-md-6 aa" *ngIf="listImageToShow[4] !== undefined">
+      <img [src]="listImageToShow[4].image" width="100%" height="250px">
+    </div>
+  </div>
+</div>
+<br>
+<div class="container" *ngIf="house !== undefined">
+  <div class="row">
+    <div id="left" class="col-md-6 col-sm-6">
+      <div class="col-md-12">
+        <label> <i class="fab fa-app-store-ios"></i> Name house</label>
+        <p>{{house.name}}</p>
+      </div>
+
+
+      <div class="col-md-12">
+        <label> <i class="fas fa-map-marker-alt"></i> Address</label>
+        <p>{{house.address}}</p>
+      </div>
+
+      <div class="col-md-12">
+        <label><i class="fas fa-home"></i> Entire apartment</label>
+        <p>{{house.quantityBedroom}} bedroom / {{house.quantityBathroom}} bathroom</p>
+      </div>
+
+      <div class="col-md-12">
+        <label><i class="fas fa-hand-holding-usd"></i> Price/night</label>
+        <p>{{house.price}}/USD</p>
+      </div>
+
+      <div class="col-md-12">
+        <label> <i class="fas fa-comment-medical"></i> Description</label>
+        <p>{{house.description}}</p>
+      </div>
+
+    </div>
+
+    <div class=" col-md-6 col-sm-6">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">StartDate</th>
+          <th scope="col">EndDate</th>
+          <th scope="col">Total</th>
+        </tr>
+        </thead>
+        <tbody *ngIf="listbooking !== null">
+        <tr *ngFor="let book of listbooking| filter: filter | paginate: { itemsPerPage: 5, currentPage: p}; index as i ">
+          <td>{{i + 1}}</td>
+          <td>{{book.user.firstName}}</td>
+          <td>{{book.user.email}}</td>
+          <td>{{book.startDate}}</td>
+          <td>{{book.endDate}}</td>
+          <td>{{getTotal(book.startDate, book.endDate, book.house.price)}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <ul class="pagination">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </ul>
+    </div>
+  </div>
+
+</div>

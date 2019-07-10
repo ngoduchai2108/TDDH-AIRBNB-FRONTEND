@@ -1,0 +1,30 @@
+<br>
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Email householder</th>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">StartDate</th>
+      <th scope="col">EndDate</th>
+      <th scope="col">Total</th>
+    </tr>
+    </thead>
+    <tbody *ngIf="listbooking !== null">
+    <tr *ngFor="let book of listbooking| filter: filter | paginate: { itemsPerPage: 5, currentPage: p}; index as i ">
+      <td>{{i + 1}}</td>
+      <td>{{book.house.user.email}}</td>
+      <td>{{book.house.name}}</td>
+      <td>{{book.house.address}}</td>
+      <td>{{book.startDate}}</td>
+      <td>{{book.endDate}}</td>
+      <td>{{getTotal(book.startDate, book.endDate, book.house.price)}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <ul class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </ul>
+</div>
