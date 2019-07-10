@@ -10,6 +10,7 @@ import {EditHouseComponent} from './user/edit-house/edit-house.component';
 import {HouseDetailComponent} from './home/house-detail/house-detail.component';
 import {HouseViewComponent} from './user/house-view/house-view.component';
 import {BookingCartComponent} from './home/booking-cart/booking-cart.component';
+import {HistoryBookingComponent} from './home/history-booking/history-booking.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'houses/view/:id',
     component: HouseViewComponent
+  },
+  {
+    path: 'history',
+    component: HistoryBookingComponent
   },
   {
     path: 'booking',
