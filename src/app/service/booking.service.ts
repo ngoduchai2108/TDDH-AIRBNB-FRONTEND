@@ -18,7 +18,9 @@ export class BookingService {
   getBooking(id: number): Observable<IBooking> {
     return this.http.get<IBooking>(this.API_URL + '/' + id );
   }
-
+  getBookingByHouse(id: number): Observable<IBooking[]> {
+    return this.http.get<IBooking[]>(this.API_URL + '/by-houses/' + id );
+  }
   cancelBooking(id: number): Observable<number> {
     return this.http.delete<number>(this.API_URL + '/' + id);
   }

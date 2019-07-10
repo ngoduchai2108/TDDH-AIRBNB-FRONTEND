@@ -1,4 +1,5 @@
 import {IHouse} from './House';
+import {IUser} from './User';
 
 export interface IBooking {
   id: number;
@@ -6,4 +7,5 @@ export interface IBooking {
   startDate: string;
   endDate: string;
   house: IHouse;
+  user: IUser;
 }

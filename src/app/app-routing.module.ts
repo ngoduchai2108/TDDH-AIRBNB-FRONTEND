@@ -9,11 +9,16 @@ import {HouseManagementComponent} from './user/house-management/house-management
 import {EditHouseComponent} from './user/edit-house/edit-house.component';
 import {HouseDetailComponent} from './home/house-detail/house-detail.component';
 import {ListBookingComponent} from './home/list-booking/list-booking.component';
+import {HouseViewComponent} from './user/house-view/house-view.component';
 
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'houses/view/:id',
+    component: HouseViewComponent
   },
   {
     path: 'booking',
