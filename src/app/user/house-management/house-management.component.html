@@ -193,15 +193,11 @@
       <td>{{house.quantityBedroom}}</td>
       <td>{{house.price}}</td>
       <td>
-        <a class="table-link danger" *ngIf="house.rented">
-									<span class="fa-stack rented">
-										<input readonly type="checkbox" checked>
-									</span>
+        <a *ngIf="house.rented">
+          <input type="checkbox" checked onclick="return false">
         </a>
-        <a class="table-link danger" *ngIf="house.rented === false">
-									<span class="fa-stack unrented">
-									<input type="checkbox" readonly>
-									</span>
+        <a *ngIf="house.rented === false">
+          <input type="checkbox" onclick="return false">
         </a>
       </td>
       <td style="width: 20%;">
