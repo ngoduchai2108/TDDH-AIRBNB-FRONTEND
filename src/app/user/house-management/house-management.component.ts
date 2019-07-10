@@ -5,6 +5,7 @@ import {CategorieshouseService} from '../../service/categorieshouse.service';
 import {CategoriesHouse} from '../../model/CategoriesHouse';
 import {ImageService} from '../../service/image.service';
 import {Router} from '@angular/router';
+import {IHouse} from '../../model/House';
 
 
 @Component({
@@ -32,7 +33,7 @@ export class HouseManagementComponent implements OnInit {
   selecetdFile = [];
   imagePreview = [];
   formHouseData: FormGroup;
-  listhouse: any;
+  listhouse: IHouse[];
   private readonly INDEXCHILDIMAGES = [1, 2, 3, 4];
   filter: any;
   p: any;
