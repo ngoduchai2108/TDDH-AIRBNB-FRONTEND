@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IBooking} from '../../model/Booking';
 import {BookingService} from '../../service/booking.service';
 
@@ -17,8 +17,9 @@ export class BookingCartComponent implements OnInit {
   ngOnInit() {
     this.listBooking();
   }
+
   listBooking() {
-    this.bookingService.getBookings().subscribe(next => this.listbooking = next , err => console.log(err));
+    this.bookingService.getBookings().subscribe(next => this.listbooking = next, err => console.log(err));
   }
 
   getTotal(startDate, endDate, price) {
@@ -27,8 +28,9 @@ export class BookingCartComponent implements OnInit {
     const diffDay = (endDateStamp - startDateStamp) / (24 * 3600 * 1000);
     return price * diffDay;
   }
+
   getTotalAllBooking() {
-    let total =  0;
+    let total = 0;
     for (const book of this.listbooking) {
       total += this.getTotal(book.startDate, book.endDate, book.house.price);
     }
@@ -46,5 +48,11 @@ export class BookingCartComponent implements OnInit {
             this.listBooking();
           }, err => this.msg = true);
     }
+  }
+
+  putCheckIn(id: number) {
+    this.bookingService.putCheckIn(id).subscribe(next => {
+      this.listBooking();
+    }, error => console.log(error));
   }
 }

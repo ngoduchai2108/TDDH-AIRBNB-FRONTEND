@@ -12,6 +12,11 @@ export class BookingService {
   constructor(private http: HttpClient) {
   }
 
+  putCheckIn(id: number): Observable<any> {
+    // @ts-ignore
+    return this.http.put<any>(this.API_URL + '/' + id);
+  }
+
   getBookings(): Observable<IBooking[]> {
     return this.http.get<IBooking[]>(this.API_URL);
   }

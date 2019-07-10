@@ -20,7 +20,7 @@
       <th scope="col">StartDate</th>
       <th scope="col">EndDate</th>
       <th scope="col">Total</th>
-      <th scope="col"></th>
+      <th scope="col">CheckIn</th>
     </tr>
     </thead>
     <tbody *ngIf="listbooking !== null">
@@ -32,16 +32,29 @@
       <td>{{book.startDate}}</td>
       <td>{{book.endDate}}</td>
       <td>{{getTotal(book.startDate, book.endDate, book.house.price)}}</td>
-      <a (click)="onDelete(book.id)" class="table-link danger">
+      <td>
+        <a *ngIf="book.checkIn!=null">
+          <input type="checkbox" checked onclick="return false">
+        </a>
+        <a *ngIf="book.checkIn==null">
+          <input type="checkbox" onclick="return false">
+        </a>
+      </td>
+      <td>
+        <a (click)="onDelete(book.id)" class="table-link danger">
 									<span class="fa-stack delete">
 										<i class="fa fa-square fa-stack-2x"></i>
 										<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
 									</span>
-      </a>
+        </a>
+      </td>
+      <td *ngIf="book.checkIn == null">
+        <button (click)="putCheckIn(book.id)" class="btn btn-primary"> CheckIn</button>
+      </td>
     </tr>
     </tbody>
   </table>
-  <td *ngIf="listbooking" ><b>All total: {{getTotalAllBooking()}}</b></td>
+  <td *ngIf="listbooking"><b>All total: {{getTotalAllBooking()}}</b></td>
   <p class="alert alert-danger" *ngIf="msg">
     You can not delete booking after 24H
   </p>

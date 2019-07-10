@@ -8,4 +8,5 @@ export interface IBooking {
   endDate: string;
   house: IHouse;
   user: IUser;
+  checkIn: string;
 }
