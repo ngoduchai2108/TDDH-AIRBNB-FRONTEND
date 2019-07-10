@@ -252,3 +252,6 @@ label {
 .view {
   color: green;
 }
+input[type="checkbox"][readonly] {
+  pointer-events: none;
+}
