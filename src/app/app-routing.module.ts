@@ -8,8 +8,8 @@ import {UserComponent} from './user/user.component';
 import {HouseManagementComponent} from './user/house-management/house-management.component';
 import {EditHouseComponent} from './user/edit-house/edit-house.component';
 import {HouseDetailComponent} from './home/house-detail/house-detail.component';
-import {ListBookingComponent} from './home/list-booking/list-booking.component';
 import {HouseViewComponent} from './user/house-view/house-view.component';
+import {BookingCartComponent} from './home/booking-cart/booking-cart.component';
 
 const routes: Routes = [
   {
@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'booking',
-    component: ListBookingComponent
+    component: BookingCartComponent
   },
   {
     path: 'houses/:id',
