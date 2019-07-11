@@ -1,0 +1,21 @@
+<form (ngSubmit)="creatEvalution()" [formGroup]="formEvalution">
+  <div class="form-group">
+    <label for="comment">Danh gia</label>
+    <textarea formControlName="comment" class="form-control" id="comment" name="comment" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Primary</button>
+</form>
+
+<br>
+<div>
+  <ul *ngFor="let evaluation of listEvaluation">
+    <li>{{evaluation.user.firstName}}: {{evaluation.comment}}</li>
+    <a (click)="traLoi(evaluation.id)">Tra Loi</a>
+    <div *ngIf="traloi">
+      <input type="text">
+    </div>
+    <ul *ngFor="let reply of evaluation.replies">
+      <li>{{reply.user.firstName}}: {{reply.content}}</li>
+    </ul>
+  </ul>
+</div>
