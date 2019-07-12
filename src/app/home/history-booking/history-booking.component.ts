@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {IBooking} from '../../model/Booking';
-import {TokenStorageService} from '../../common/token/token-storage.service';
 import {BookingService} from '../../service/booking.service';
 
 @Component({
@@ -10,26 +8,15 @@ import {BookingService} from '../../service/booking.service';
   styleUrls: ['./history-booking.component.scss']
 })
 export class HistoryBookingComponent implements OnInit {
-  formBooking: FormGroup;
   authority = false;
   listbooking: IBooking[];
   filter: any;
   p: any;
 
-  constructor(private tokenStorage: TokenStorageService,
-              private bookingService: BookingService,
-              private fb: FormBuilder) {
+  constructor(private bookingService: BookingService) {
   }
 
   ngOnInit() {
-    this.formBooking = this.fb.group({
-      startDate: ['', [Validators.required]],
-      endDate: ['', [Validators.required]]
-    });
-
-    if (this.tokenStorage.getToken()) {
-      this.authority = true;
-    }
     this.getBookingByUser();
   }
 
