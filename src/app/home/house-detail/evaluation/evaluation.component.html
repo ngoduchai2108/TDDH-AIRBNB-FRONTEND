@@ -1,21 +1,37 @@
 <form (ngSubmit)="creatEvalution()" [formGroup]="formEvalution">
   <div class="form-group">
-    <label for="comment">Danh gia</label>
+    <label for="comment" style="font-size: 23px"><b>Reviews</b></label>
     <textarea formControlName="comment" class="form-control" id="comment" name="comment" rows="3"></textarea>
   </div>
-  <button type="submit" class="btn btn-primary">Primary</button>
+  <button type="submit" class="btn btn-primary">Send</button>
 </form>
 
 <br>
 <div>
-  <ul *ngFor="let evaluation of listEvaluation">
-    <li>{{evaluation.user.firstName}}: {{evaluation.comment}}</li>
-    <a (click)="traLoi(evaluation.id)">Tra Loi</a>
-    <div *ngIf="traloi">
-      <input type="text">
+  <div class="media border p-3" *ngFor="let evaluation of listEvaluation">
+    <img src="../../../../assets/icon_member_one.png" alt="John Doe" class="mr-3 mt-3 rounded-circle"
+         style="width:60px;">
+    <div class="media-body">
+      <h4>{{evaluation.user.firstName}}</h4>
+      <p>{{evaluation.comment}}
+        <br>
+        <a (click)="reply(evaluation.id)" style="color: #5900a6">REPLY</a></p>
+      <div *ngIf="replies[evaluation.id]">
+        <!--      (ngSubmit)="creatReply(evaluation)-->
+        <form [formGroup]="formReply" (keydown)="creatReply(evaluation,  $event)">
+          <div class="form-group">
+            <textarea formControlName="content" class="form-control" id="content" name="content" rows="3"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="media p-3" *ngFor="let reply of evaluation.replies">
+        <img src="../../../../assets/iconc_member_two.png" alt="Jane Doe" class="mr-3 mt-3 rounded-circle"
+             style="width:45px;">
+        <div class="media-body">
+          <h4>{{reply.user.firstName}} </h4>
+          <p>{{reply.content}}</p>
+        </div>
+      </div>
     </div>
-    <ul *ngFor="let reply of evaluation.replies">
-      <li>{{reply.user.firstName}}: {{reply.content}}</li>
-    </ul>
-  </ul>
+  </div>
 </div>
