@@ -17,7 +17,6 @@
         <br>
         <a (click)="reply(evaluation.id)" style="color: #5900a6">REPLY</a></p>
       <div *ngIf="replies[evaluation.id]">
-        <!--      (ngSubmit)="creatReply(evaluation)-->
         <form [formGroup]="formReply" (keydown)="creatReply(evaluation,  $event)">
           <div class="form-group">
             <textarea formControlName="content" class="form-control" id="content" name="content" rows="3"></textarea>

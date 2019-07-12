@@ -12,11 +12,16 @@
         <li class="nav-item active">
           <a class="nav-link" routerLink="home">Host a home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item" >
-          <a class="nav-link" routerLink="houses">Create House</a>
-        </li>
-        <li class="nav-item" >
-          <a class="nav-link" routerLink="history">History Booking</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            Manager
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" routerLink="houses">Create House</a>
+            <a class="dropdown-item" routerLink="history">History Booking</a>
+            <a class="dropdown-item" href="#">Thong ke</a>
+          </div>
         </li>
         <li class="nav-item">
           <a (click)="logOut()" class="btn btn-link">Logout</a>
@@ -29,7 +34,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right" *ngIf="!authority">
-        <li class="nav-item" >
+        <li class="nav-item">
           <a routerLink="login/" class="nav-link">Login</a>
         </li>
         <li class="nav-item">
