@@ -7,16 +7,16 @@
 </form>
 
 <br>
-<label>{{this.listEvaluation.length}} Reviews </label>
+<label *ngIf="listEvaluation">{{listEvaluation.length}} Reviews </label>
 <div>
-  <div class="media border p-3" *ngFor="let evaluation of listEvaluation">
+  <div class="media border-bottom p-1" *ngFor="let evaluation of listEvaluation">
     <img src="../../../../assets/icon_member_one.png" alt="John Doe" class="mr-3 mt-3 rounded-circle"
-         style="width:60px;">
+         style="width:40px;">
     <div class="media-body">
-      <h4>{{evaluation.user.firstName}}</h4>
-      <p>{{evaluation.comment}}
-        <br>
-        <a (click)="reply(evaluation.id)" style="color: #5900a6">REPLY</a></p>
+      <h4 style="color: #004cbf; padding-top: 15px"><b>{{evaluation.user.firstName}} </b>
+        <small style="color: black">{{evaluation.comment}}</small>
+      </h4>
+      <a (click)="reply(evaluation.id)" style="color: #5900a6">reply</a>
       <div *ngIf="replies[evaluation.id]">
         <form [formGroup]="formReply" (keydown)="creatReply(evaluation,  $event)">
           <div class="form-group">
@@ -24,12 +24,13 @@
           </div>
         </form>
       </div>
-      <div class="media p-3" *ngFor="let reply of evaluation.replies">
+      <div class="media p-1" *ngFor="let reply of evaluation.replies">
         <img src="../../../../assets/iconc_member_two.png" alt="Jane Doe" class="mr-3 mt-3 rounded-circle"
-             style="width:45px;">
+             style="width:30px;">
         <div class="media-body">
-          <h4>{{reply.user.firstName}} </h4>
-          <p>{{reply.content}}</p>
+          <h4 style="color: #004cbf; padding-top: 15px"><b>{{reply.user.firstName}} </b>
+            <small style="color: black">{{reply.content}}</small>
+          </h4>
         </div>
       </div>
     </div>
