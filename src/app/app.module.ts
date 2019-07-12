@@ -20,6 +20,8 @@ import { HouseDetailComponent } from './home/house-detail/house-detail.component
 import { HouseViewComponent } from './user/house-view/house-view.component';
 import { HistoryBookingComponent } from './home/history-booking/history-booking.component';
 import { BookingCartComponent } from './home/booking-cart/booking-cart.component';
+import { EvaluationComponent } from './home/house-detail/evaluation/evaluation.component';
+import { IncomeComponent } from './user/income/income.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { BookingCartComponent } from './home/booking-cart/booking-cart.component
     HouseViewComponent,
     HistoryBookingComponent,
     BookingCartComponent,
+    EvaluationComponent,
+    IncomeComponent,
   ],
   imports: [
     HttpClientModule,

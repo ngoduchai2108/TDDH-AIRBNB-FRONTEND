@@ -11,11 +11,16 @@ import {HouseDetailComponent} from './home/house-detail/house-detail.component';
 import {HouseViewComponent} from './user/house-view/house-view.component';
 import {BookingCartComponent} from './home/booking-cart/booking-cart.component';
 import {HistoryBookingComponent} from './home/history-booking/history-booking.component';
+import {IncomeComponent} from './user/income/income.component';
 
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'income',
+    component: IncomeComponent
   },
   {
     path: 'houses/view/:id',

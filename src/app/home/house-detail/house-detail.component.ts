@@ -91,8 +91,6 @@ export class HouseDetailComponent implements OnInit {
     const startDateTime = new Date(startDateStr);
     const startDateStamp = startDateTime.getTime();
     const nowStamp = new Date().getTime();
-    console.log(nowStamp);
-    console.log(startDateStamp - nowStamp);
     return ((startDateStamp - nowStamp) > 0) && ((startDateStamp - nowStamp) < 10 * 24 * 3600 * 1000);
   }
   validCheckIn() {
