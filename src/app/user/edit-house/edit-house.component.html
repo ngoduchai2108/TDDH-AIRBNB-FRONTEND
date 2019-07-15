@@ -20,7 +20,6 @@
                 <div class="row">
                   <ul class="preview-thumbnail nav nav-tabs">
                     <li *ngFor="let indexOfChildImage of INDEXCHILDIMAGES" class="col-md-3">
-                      <a data-target="#pic-1" data-toggle="tab">
                         <div class="form-group files">
                           <input #selectFile2 (change)="onFileUpload($event,indexOfChildImage,houseId)" id="2"
                                  style="display: none"
@@ -40,7 +39,6 @@
                             </div>
                           </div>
                         </div>
-                      </a>
                     </li>
                   </ul>
                 </div>

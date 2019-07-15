@@ -30,8 +30,7 @@
 
             <ul class="preview-thumbnail nav nav-tabs">
               <li *ngFor="let indexOfChildImage of INDEXCHILDIMAGES">
-                <a data-target="#pic-1" data-toggle="tab">
-                  <div class="form-group files">
+                <div class="form-group files">
                     <input id="2" style="display: none" type="file" (change)="onFileUpload($event,indexOfChildImage)"
                            #selectFile2>
                     <button (click)="selectFile2.click()">Select Image</button>
@@ -39,7 +38,6 @@
                       <img [src]="imagePreview[indexOfChildImage]">
                     </div>
                   </div>
-                </a>
               </li>
 
             </ul>
