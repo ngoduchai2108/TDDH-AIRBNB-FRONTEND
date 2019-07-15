@@ -114,8 +114,8 @@ export class EditHouseComponent implements OnInit {
 //     reader.onload = () => {
 //       this.listImageToShow[number] = reader.result;
 //     };
-//     this.selecetdFile[number] = event.target.files[0];
-//     reader.readAsDataURL(this.selecetdFile[number]);
+//     this.selectedFile[number] = event.target.files[0];
+//     reader.readAsDataURL(this.selectedFile[number]);
 // }
   deleteImage(id: number, index: number) {
     const r = confirm('Are U sure delete this image');
