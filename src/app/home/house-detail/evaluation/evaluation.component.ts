@@ -19,6 +19,7 @@ export class EvaluationComponent implements OnInit {
   @Input() house: IHouse;
   private replies = [];
   formReply: FormGroup;
+  viewMore = 3;
 
   constructor(private fb: FormBuilder,
               private evaluationService: EvaluationService,
@@ -28,6 +29,7 @@ export class EvaluationComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.house);
+    this.house.countEval = 1;
     this.formEvalution = this.fb.group({
       comment: ['', [Validators.required, Validators.minLength(5)]],
     });
@@ -64,6 +66,7 @@ export class EvaluationComponent implements OnInit {
   getAllReplyOfEvaluation(evaluation: IEvaluation) {
     this.replyService.getlistReplies(evaluation.id).subscribe(next => {
       evaluation.replies = next.reverse();
+      evaluation.countRepl = 1;
     }, err => console.log(err));
   }
   reply(id: number) {
@@ -81,5 +84,13 @@ export class EvaluationComponent implements OnInit {
         this.formReply.reset();
       }, err => console.log(err));
     }
+  }
+
+  showEval() {
+    this.house.countEval++;
+  }
+
+  showRepl(evaluation: IEvaluation) {
+    evaluation.countRepl++;
   }
 }

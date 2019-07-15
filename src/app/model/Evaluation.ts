@@ -9,4 +9,5 @@ export interface IEvaluation {
   house: IHouse;
   user: IUser;
   replies: IReply[];
+  countRepl: number;
 }
