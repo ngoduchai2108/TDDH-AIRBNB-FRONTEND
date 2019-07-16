@@ -30,7 +30,7 @@ export class HouseManagementComponent implements OnInit {
     }
   };
 
-  selecetdFile = [];
+  selectedFile = [];
   imagePreview = [];
   formHouseData: FormGroup;
   listhouse: IHouse[];
@@ -65,8 +65,8 @@ export class HouseManagementComponent implements OnInit {
     reader.onload = () => {
       this.imagePreview[index] = reader.result;
     };
-    this.selecetdFile[index] = event.target.files[0];
-    reader.readAsDataURL(this.selecetdFile[index]);
+    this.selectedFile[index] = event.target.files[0];
+    reader.readAsDataURL(this.selectedFile[index]);
   }
 
 
@@ -80,7 +80,7 @@ export class HouseManagementComponent implements OnInit {
         this.updateListHouse();
         this.formHouseData.reset();
         this.imagePreview = [];
-        this.selecetdFile = [];
+        this.selectedFile = [];
       }, err => this.createFail = true);
 
     } else {
@@ -90,10 +90,10 @@ export class HouseManagementComponent implements OnInit {
 
   OnUploadFile(id: number) {
     // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.selecetdFile.length; i++) {
+    for (let i = 0; i < this.selectedFile.length; i++) {
       const fd = new FormData();
-      if (this.selecetdFile[i] !== undefined) {
-        fd.append('file', this.selecetdFile[i], this.selecetdFile[i].name);
+      if (this.selectedFile[i] !== undefined) {
+        fd.append('file', this.selectedFile[i], this.selectedFile[i].name);
         this.imgService.create(id, fd).subscribe(next => console.log('ok'),
           err => console.log(err));
       }

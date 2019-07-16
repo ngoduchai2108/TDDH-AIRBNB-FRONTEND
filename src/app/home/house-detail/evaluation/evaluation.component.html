@@ -9,30 +9,36 @@
 <br>
 <label *ngIf="listEvaluation">{{listEvaluation.length}} Reviews </label>
 <div>
-  <div class="media border-bottom p-1" *ngFor="let evaluation of listEvaluation">
-    <img src="../../../../assets/icon_member_one.png" alt="John Doe" class="mr-3 mt-3 rounded-circle"
-         style="width:40px;">
-    <div class="media-body">
-      <h4 style="color: #004cbf; padding-top: 15px"><b>{{evaluation.user.firstName}} </b>
-        <small style="color: black">{{evaluation.comment}}</small>
-      </h4>
-      <a (click)="reply(evaluation.id)" style="color: #5900a6">reply</a>
-      <div *ngIf="replies[evaluation.id]">
-        <form [formGroup]="formReply" (keydown)="creatReply(evaluation,  $event)">
-          <div class="form-group">
-            <textarea formControlName="content" class="form-control" id="content" name="content" rows="3"></textarea>
+  <div *ngFor="let evaluation of listEvaluation ; index as i">
+    <div class="media border-bottom p-1" *ngIf="i < viewMore*house.countEval">
+      <img src="../../../../assets/icon_member_one.png" alt="John Doe" class="mr-3 mt-3 rounded-circle"
+           style="width:40px;">
+      <div class="media-body">
+        <h4 style="color: #004cbf; padding-top: 15px"><b>{{evaluation.user.firstName}} </b>
+          <small style="color: black">{{evaluation.comment}}</small>
+        </h4>
+        <button class="btn btn-link" (click)="reply(evaluation.id)" style="color: #5900a6">reply</button>
+        <div *ngIf="replies[evaluation.id]">
+          <form [formGroup]="formReply" (keydown)="creatReply(evaluation,  $event)">
+            <div class="form-group">
+              <input formControlName="content" class="form-control" id="content" name="content" rows="3">
+            </div>
+          </form>
+        </div>
+        <div  *ngFor="let reply of evaluation.replies; index as j">
+          <div class="media p-1" *ngIf=" j < viewMore*evaluation.countRepl">
+            <img src="../../../../assets/iconc_member_two.png" alt="Jane Doe" class="mr-3 mt-3 rounded-circle"
+                 style="width:30px;">
+            <div class="media-body">
+              <h4 style="color: #004cbf; padding-top: 15px"><b>{{reply.user.firstName}} </b>
+                <small style="color: black">{{reply.content}}</small>
+              </h4>
+            </div>
           </div>
-        </form>
-      </div>
-      <div class="media p-1" *ngFor="let reply of evaluation.replies">
-        <img src="../../../../assets/iconc_member_two.png" alt="Jane Doe" class="mr-3 mt-3 rounded-circle"
-             style="width:30px;">
-        <div class="media-body">
-          <h4 style="color: #004cbf; padding-top: 15px"><b>{{reply.user.firstName}} </b>
-            <small style="color: black">{{reply.content}}</small>
-          </h4>
+          <button class="btn btn-link" *ngIf="j === (viewMore*evaluation.countRepl) && j!== replies.length" (click)="showRepl(evaluation)" style="color: red; text-align: right">View more 3 reply</button>
         </div>
       </div>
     </div>
+    <button class="btn btn-link" *ngIf="i === (viewMore*house.countEval) && i!== listEvaluation.length" (click)="showEval()" style="color: red ; text-align: right">View more 3 comment</button>
   </div>
 </div>

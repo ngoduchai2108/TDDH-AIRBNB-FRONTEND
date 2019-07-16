@@ -21,7 +21,7 @@
               <div class="form-group files">
                 <input id="1" style="display: none" type="file" (change)="onFileUpload($event,0)" #selectFile1>
                 <button (click)="selectFile1.click()">Select Image</button>
-                <div *ngIf="selecetdFile[0]!==undefined" class="image-preview">
+                <div *ngIf="selectedFile[0]!==undefined" class="image-preview">
                   <img [src]="imagePreview[0]">
                 </div>
 
@@ -30,16 +30,14 @@
 
             <ul class="preview-thumbnail nav nav-tabs">
               <li *ngFor="let indexOfChildImage of INDEXCHILDIMAGES">
-                <a data-target="#pic-1" data-toggle="tab">
-                  <div class="form-group files">
+                <div class="form-group files">
                     <input id="2" style="display: none" type="file" (change)="onFileUpload($event,indexOfChildImage)"
                            #selectFile2>
                     <button (click)="selectFile2.click()">Select Image</button>
-                    <div *ngIf="selecetdFile[indexOfChildImage] !== undefined " class="image-preview">
+                    <div *ngIf="selectedFile[indexOfChildImage] !== undefined " class="image-preview">
                       <img [src]="imagePreview[indexOfChildImage]">
                     </div>
                   </div>
-                </a>
               </li>
 
             </ul>

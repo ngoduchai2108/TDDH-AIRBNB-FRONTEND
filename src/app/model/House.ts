@@ -7,4 +7,5 @@ export interface IHouse {
   rented: boolean;
   description: string;
   price: number;
+  countEval: number;
 }
